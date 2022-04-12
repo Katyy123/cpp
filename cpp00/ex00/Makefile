@@ -6,13 +6,13 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 17:26:52 by cfiliber          #+#    #+#              #
-#    Updated: 2022/04/09 18:43:40 by cfiliber         ###   ########.fr        #
+#    Updated: 2022/04/12 16:51:51 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = megaphone
 
-SRCS = \
+SRCS = megaphone.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
