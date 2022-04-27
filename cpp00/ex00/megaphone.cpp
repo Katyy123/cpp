@@ -6,38 +6,25 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 16:49:12 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/04/26 19:28:30 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/04/27 15:19:23 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-
-int	ft_toupper(int c)
-{
-	if (c >= 97 && c <= 122)
-		c -= 32;
-	return (c);
-}
+#include <cctype>
+#include <string>
 
 int	main(int ac, char **av)
 {
-	int		i;
-	int		j;
-	
-	i = 1;
 	if (ac == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else
 	{
-		while (av[i])
+		for (int i = 1; i < ac; i++)
 		{
-			j = 0;
-			while (av[i][j])
-			{
-				std::cout << (char)ft_toupper(av[i][j]);
-				j++;
-			}
-			i++;
+			std::string str(av[i]);
+			for (unsigned long j = 0; j < str.length(); j++)
+				std::cout << (char)std::toupper(str[j]);
 		}
 		std::cout << std::endl;
 	}
