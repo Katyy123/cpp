@@ -6,13 +6,16 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 18:45:41 by cfiliber          #+#    #+#              #
-#    Updated: 2022/04/09 18:48:27 by cfiliber         ###   ########.fr        #
+#    Updated: 2022/04/28 19:30:20 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = my_awesome_phonebook
 
 SRCS = \
+		main.cpp\
+		PhoneBook.Class.cpp\
+		Contact.Class.cpp 
 
 OBJS = $(SRCS:.cpp=.o)
 
