@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 18:45:41 by cfiliber          #+#    #+#              #
-#    Updated: 2022/04/28 19:30:20 by cfiliber         ###   ########.fr        #
+#    Updated: 2022/04/29 16:58:59 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS = \
 
 OBJS = $(SRCS:.cpp=.o)
 
-C++ = c++
+CC = clang++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
@@ -33,12 +33,12 @@ CURSIVE = '\x1b[3m'
 RESET = '\x1b[0m'
 
 %.o : %.cpp
-	$(C++) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(C++) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 	@echo $(GREEN)$(CURSIVE)"\nAll files have been compiled"$(RESET)
 
 clean:
