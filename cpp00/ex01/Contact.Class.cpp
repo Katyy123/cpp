@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:28:49 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/04/30 19:21:17 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/02 19:20:10 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,53 +24,46 @@ Contact::~Contact(void) {
 	return;
 }
 
-// void	Contact::ft_add(void) {
+void	Contact::check_add_command(std::string buff, std::string field) {
 	
-// 	// std::string name;
-// 	// std::string	last_name;
-// 	// std::string	nickname;
-// 	// std::string phone;
-// 	// std::string secret;
-	
-// 	std::cout << std::endl;
-// 	std::cout << "Type the info of the contanct you want to add" << std::endl;
-// 	std::cout << std::endl;
-// 	std::cout << "First name: ";
-// 	std::cin >> this->_name;
-// 	// if (name[0] == '\n') {
-// 	// 	name.erase();
-// 	// 	std::cout << "\x1b[31m""Error: first name not valid""\x1b[0m" << std::endl;
-// 	// 	std::cout << std::endl;
-// 	// 	std::cout << "First name: ";
-// 	// 	std::cin >> name;
-// 	// }
-// 	//while (std::all_of(name.begin(), name.end(), [](unsigned char c){ return !std::isprint(c); })) {
-// 	for (unsigned long i = 0; i < name.length() || name.empty(); i++) {
-// 		if (!std::isprint(name[i]) || name.empty()) {
-// 			name.erase();
-// 			std::cout << "\x1b[31m""Error: first name not valid""\x1b[0m" << std::endl;
-// 			std::cout << std::endl;
-// 			std::cout << "First name: ";
-// 			std::cin >> name;
-// 			i = 0;
-// 		}
-// 	}
-// 	std::cout << "Last name: ";
-// 	std::cin >> last_name;
-// 	for (unsigned long i = 0; i < last_name.length() || last_name.empty(); i++) {
-// 		if (!std::isprint(last_name[i]) || last_name.empty()) {
-// 			last_name.erase();
-// 			std::cout << "\x1b[31m""Error: last name not valid""\x1b[0m" << std::endl;
-// 			std::cout << std::endl;
-// 			std::cout << "Last name: ";
-// 			std::cin >> last_name;
-// 			i = 0;
-// 		}
-// 	}
-// 	//std::cout << name << std::endl;
-// }
+	for (unsigned long i = 0; i < buff.length() || buff.empty(); i++) {	
+		if (!std::isprint(buff[i]) || buff.empty() ||
+			(field == "Phone number" && (!std::isdigit(buff[i]) && buff[i] != ' '))) {
+			buff.erase();
+			std::cout << "\x1b[31m""Error: ";
+			std::cout << field;
+			std::cout << " not valid""\x1b[0m" << std::endl;
+			std::cout << field;
+			std::cout << ": ";
+			std::cin >> buff;
+			i = 0;
+		}
+	}
+}
 
-void	add_contact_fields(void) {
+void	Contact::add_contact_fields(void) {
 	
-	
+	std::cout << std::endl;
+	std::cout << "Type the info of the contact you want to add" << std::endl;
+	std::cout << std::endl;
+	std::cout << "First name: ";
+	std::getline(std::cin >> std::ws, this->_name);
+	std::cout << _name << std::endl;
+	check_add_command(_name, "First name");
+	std::cout << "Last name: ";
+	std::getline(std::cin >> std::ws, this->_last_name);
+	std::cout << _last_name << std::endl;
+	check_add_command(_last_name, "Last name");
+	std::cout << "Nickname: ";
+	std::getline(std::cin >> std::ws, this->_nickname);
+	std::cout << _nickname << std::endl;
+	check_add_command(_nickname, "Nickname");
+	std::cout << "Phone number: ";
+	std::getline(std::cin >> std::ws, this->_phone);
+	std::cout << _phone << std::endl;
+	check_add_command(_phone, "Phone number");
+	std::cout << "Darkest secret: ";
+	std::getline(std::cin >> std::ws, this->_secret);
+	std::cout << _secret << std::endl;
+	check_add_command(_secret, "Darkest secret");
 }

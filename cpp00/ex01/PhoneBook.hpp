@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:23:51 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/04/30 19:20:42 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/02 19:24:20 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ public:
 	void	set_phone(std::string buff);
 	void	set_secret(std::string buff);
 	void	add_contact_fields(void);
+	void	check_add_command(std::string buff, std::string field);
 
 private:
 	std::string	_name;
@@ -43,14 +44,13 @@ private:
 	std::string	_secret;
 };
 
-
 class PhoneBook {
 
 public:
 	PhoneBook(void);
 	~PhoneBook(void);
 	void	check_command(std::string buff);
-	void	check_add_command(std::string buff);
+	//void	check_add_command(std::string buff);
 	void	ft_add(void);
 	void	ft_search(void);//probably to modify
 	void	ft_exit(void);//probably to modify
