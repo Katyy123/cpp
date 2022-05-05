@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:24:09 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/04/29 19:31:38 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/05 15:10:50 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main(){
 	//Contact		contact;
 
 	std::cout << "\x1b[35m""Welcome to My Awesome PhoneBook!""\x1b[0m" << std::endl;
+	while (1) {
 	std::cout << std::endl;
 	std::cout << "Type ""\x1b[36m""ADD""\x1b[0m"" if you want to save a new contact." << std::endl;
 	std::cout << "Type ""\x1b[36m""SEARCH""\x1b[0m"" if you want to display a specific contact." << std::endl;
@@ -42,5 +43,6 @@ int main(){
 	
 	phonebook.check_command(buff);
 	
+	}
 	return 0;
 }
