@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:28:49 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/05 17:08:45 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/08 17:33:00 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,27 @@
 
 Contact::Contact(void) {
 	
-	//std::cout << "Constructor called" << std::endl;
 	return;
 }
 
 Contact::~Contact(void) {
 	
-	//std::cout << "Destructor called" << std::endl;
 	return;
 }
 
 std::string	Contact::get_name(void) const {
 
 	return this->_name;
+}
+
+std::string	Contact::get_last_name(void) const {
+
+	return this->_last_name;
+}
+
+std::string	Contact::get_nickname(void) const {
+
+	return this->_nickname;
 }
 
 void	Contact::_check_add_command(std::string buff, std::string field) {
@@ -53,7 +61,6 @@ void	Contact::add_contact_fields(void) {
 	std::cout << std::endl;
 	std::cout << "First name: ";
 	std::getline(std::cin >> std::ws, this->_name);
-	std::cout << _name << std::endl;
 	//std::cout << this->_name << std::endl;
 	_check_add_command(this->_name, "First name");
 	std::cout << "Last name: ";
