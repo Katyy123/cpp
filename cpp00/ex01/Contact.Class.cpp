@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:28:49 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/09 14:49:23 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:24:39 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ std::string	Contact::get_secret(void) const {
 	return this->_secret;
 }
 
-void	Contact::_check_add_command(std::string buff, std::string field) {
+void	Contact::_check_add_command(std::string& buff, std::string field) {
 	
 	for (unsigned long i = 0; i < buff.length() || buff.empty(); i++) {	
 		if (!std::isprint(buff[i]) || buff.empty() ||

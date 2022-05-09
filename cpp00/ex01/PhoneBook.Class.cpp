@@ -6,13 +6,13 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:29:39 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/09 15:02:27 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:47:04 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void) : _contacts_num(0) {
+PhoneBook::PhoneBook(void) : _contact_index(0), _contacts_num(0) {
 	
 	return;
 }
@@ -42,8 +42,10 @@ void	PhoneBook::check_command(std::string buff) {
 
 void	PhoneBook::_update_contacts_arr(const Contact contact) {
 
-	this->_arr_contacts[this->_contacts_num % MAX_CONTACTS] = contact;
-	this->_contacts_num += 1;
+	this->_arr_contacts[this->_contact_index % MAX_CONTACTS] = contact;
+	if (this->_contact_index < 8)
+		this->_contacts_num += 1;
+	this->_contact_index += 1;
 }
 
 void	PhoneBook::_ft_add(void) {

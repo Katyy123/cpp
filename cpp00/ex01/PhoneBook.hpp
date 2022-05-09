@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:23:51 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/09 15:02:50 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:47:11 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ private:
 	std::string	_phone;
 	std::string	_secret;
 	
-	void		_check_add_command(std::string buff, std::string field);
+	void		_check_add_command(std::string& buff, std::string field);
 };
 
 
@@ -56,6 +56,7 @@ public:
 private:
 	void	_ft_add(void);
 	Contact _arr_contacts[MAX_CONTACTS];
+	int		_contact_index;
 	int		_contacts_num;
 	void	_update_contacts_arr(const Contact contact);
 	
