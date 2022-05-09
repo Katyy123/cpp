@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:23:51 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/08 19:30:16 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/09 15:02:50 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string>
 # include <cctype>
 
-#define MAX_CONTACTS 100
+#define MAX_CONTACTS 8
 
 
 class Contact {
@@ -67,7 +67,7 @@ private:
 	void	_search_specif_contact(void) const;
 	int		_ft_is_numeric(std::string str) const;
 	int		_ft_atoi(std::string str) const;
-	int		_is_not_toobig(std::string str) const;
+	int		_is_toobig(std::string str) const;
 	
 	void	_ft_exit(void) const;
 };

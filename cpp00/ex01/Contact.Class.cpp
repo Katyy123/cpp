@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:28:49 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/08 17:33:00 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/09 14:49:23 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ std::string	Contact::get_last_name(void) const {
 std::string	Contact::get_nickname(void) const {
 
 	return this->_nickname;
+}
+
+std::string	Contact::get_phone(void) const {
+
+	return this->_phone;
+}
+
+std::string	Contact::get_secret(void) const {
+
+	return this->_secret;
 }
 
 void	Contact::_check_add_command(std::string buff, std::string field) {
