@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:28:49 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/09 17:24:39 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:46:36 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	Contact::_check_add_command(std::string& buff, std::string field) {
 			std::cout << " not valid""\x1b[0m" << std::endl;
 			std::cout << field;
 			std::cout << ": ";
-			std::getline(std::cin >> std::ws, buff);
+			if (!std::getline(std::cin, buff))
+				exit(EXIT_FAILURE);
 			i = 0;
 		}
 	}
@@ -70,23 +71,23 @@ void	Contact::add_contact_fields(void) {
 	std::cout << "\x1b[3m""Type the info of the contact you want to add""\x1b[0m" << std::endl;
 	std::cout << std::endl;
 	std::cout << "First name: ";
-	std::getline(std::cin >> std::ws, this->_name);
-	//std::cout << this->_name << std::endl;
+	if (!std::getline(std::cin, this->_name))
+		exit(EXIT_FAILURE);
 	_check_add_command(this->_name, "First name");
 	std::cout << "Last name: ";
-	std::getline(std::cin >> std::ws, this->_last_name);
-	//std::cout << _last_name << std::endl;
+	if (!std::getline(std::cin, this->_last_name))
+		exit(EXIT_FAILURE);
 	_check_add_command(this->_last_name, "Last name");
 	std::cout << "Nickname: ";
-	std::getline(std::cin >> std::ws, this->_nickname);
-	//std::cout << _nickname << std::endl;
+	if (!std::getline(std::cin, this->_nickname))
+		exit(EXIT_FAILURE);
 	_check_add_command(this->_nickname, "Nickname");
 	std::cout << "Phone number: ";
-	std::getline(std::cin >> std::ws, this->_phone);
-	//std::cout << _phone << std::endl;
+	if (!std::getline(std::cin, this->_phone))
+		exit(EXIT_FAILURE);
 	_check_add_command(this->_phone, "Phone number");
 	std::cout << "Darkest secret: ";
-	std::getline(std::cin >> std::ws, this->_secret);
-	//std::cout << _secret << std::endl;
+	if (!std::getline(std::cin, this->_secret))
+		exit(EXIT_FAILURE);
 	_check_add_command(this->_secret, "Darkest secret");
 }

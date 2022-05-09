@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:29:39 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/09 17:47:04 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:47:49 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	PhoneBook::check_command(std::string buff) {
 
 
 
-/* ----- ADD FUNCTIONS ----- */
+/* ---------- ADD FUNCTIONS ---------- */
 
 void	PhoneBook::_update_contacts_arr(const Contact contact) {
 
@@ -60,7 +60,7 @@ void	PhoneBook::_ft_add(void) {
 }
 
 
-/* ----- SEARCH FUNCTIONS ----- */
+/* ---------- SEARCH FUNCTIONS ---------- */
 
 void	PhoneBook::_print_index(int index) const {
 
@@ -155,13 +155,15 @@ void	PhoneBook::_search_specif_contact(void) const {
 
 	std::cout << std::endl;
 	std::cout << "Type the index of the contact you want to be displayed: ";
-	std::getline(std::cin >> std::ws, buff);
-	while (!this->_ft_is_numeric(buff) || this->_is_toobig(buff)) {
+	if (!std::getline(std::cin, buff))
+		exit(EXIT_FAILURE);
+	while (!this->_ft_is_numeric(buff) || this->_is_toobig(buff) || buff == "0") {
 		std::cout << "\x1b[31m""Wrong index. Type a number from 1 to ";
 	 	std::cout << _contacts_num;
 		std::cout << ": " << "\x1b[0m";;
 		buff.erase();
-		std::getline(std::cin >> std::ws, buff);
+		if (!std::getline(std::cin, buff))
+		exit(EXIT_FAILURE);
 	}
 	index = _ft_atoi(buff);
 	std::cout << std::endl;
@@ -200,7 +202,7 @@ void	PhoneBook::_ft_search(void) const {
 }
 
 
-/* ----- EXIT FUNCTION ----- */
+/* ---------- EXIT FUNCTION ---------- */
 
 void	PhoneBook::_ft_exit(void) const {
 	
@@ -208,7 +210,7 @@ void	PhoneBook::_ft_exit(void) const {
 }
 
 
-/* ----- UTILS ----- */
+/* ---------- UTILS ---------- */
 
 int		PhoneBook::_ft_is_numeric(std::string str) const {
 
