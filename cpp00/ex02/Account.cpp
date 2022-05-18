@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 18:14:36 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/09 18:34:36 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:37:17 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ Account::Account(int initial_deposit) {
 
 	
 }
+Account test;
+Account test1(test);
 
 Account::~Account(void) {
 
