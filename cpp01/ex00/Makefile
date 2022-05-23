@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/05/23 19:47:52 by cfiliber          #+#    #+#              #
+#    Updated: 2022/05/23 20:03:29 by cfiliber         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = BraiiiiiiinnnzzzZ
 
 SRCS = \
@@ -10,7 +22,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g #-fsanitize=address
 
 GREEN = '\x1b[32m'
 YELLOW = '\x1b[33m'
