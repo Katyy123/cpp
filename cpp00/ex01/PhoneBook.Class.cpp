@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:29:39 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/23 14:52:53 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:55:25 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void	PhoneBook::_search_specif_contact(void) const {
 	std::cout << "Type the index of the contact you want to be displayed: ";
 	if (!std::getline(std::cin, buff))
 		exit(EXIT_FAILURE);
-	while (!this->_ft_is_numeric(buff) || this->_is_toobig(buff) || buff == "0") {
+	while (!this->_ft_is_numeric(buff) || this->_is_toobig(buff) || buff == "0" || buff.empty()) {
 		std::cout << "\x1b[31m""Wrong index. Type a number from 1 to ";
 	 	std::cout << _contacts_num;
 		std::cout << ": " << "\x1b[0m";;
