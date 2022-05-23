@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
+/*   PhoneBook.Class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 19:29:39 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/05/09 19:47:49 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:52:53 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,21 +240,18 @@ int		PhoneBook::_is_toobig(std::string str) const {
 	
 	int	i;
 	int	num;
-	int	is_toobig;
 
 	num = 0;
 	i = 0;
 	while (str[i] >= 48 && str[i] <= 57) {
 		if (((2147483647 - (str[i] - 48)) / 10 < num))
-			is_toobig = 1;
-		else
-			is_toobig = 0;
-		num = num * 10 + (str[i] - 48);
-		i++;
+			return 1;
+		else {
+			num = num * 10 + (str[i] - 48);
+			i++;
+		}
 	}
-	if (is_toobig == 0) {
-		if (num > this->_contacts_num)
-			is_toobig = 1;
-	}
-	return (is_toobig);
+	if (num > this->_contacts_num)
+			return 1;
+	return 0;
 }
