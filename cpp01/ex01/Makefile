@@ -9,7 +9,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g #-fsanitize=address
 
 GREEN = '\x1b[32m'
 YELLOW = '\x1b[33m'
