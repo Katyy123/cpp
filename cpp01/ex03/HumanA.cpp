@@ -14,15 +14,15 @@
 
 HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon) {
 
-	std::cout << "A HumanA has been born" << std::endl;
+	std::cout << name << " has been born and has " << weapon.getType() << " as a weapon" << std::endl;
 }
 
 HumanA::~HumanA() {
 	
-	std::cout << "A HumanA has died" << std::endl;
+	std::cout << this->_name << " has died" << std::endl;
 }
 
-void	HumanA::_attack() {
+void	HumanA::attack() {
 
 	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
 }

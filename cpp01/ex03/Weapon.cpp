@@ -14,12 +14,12 @@
 
 Weapon::Weapon(std::string type) : _type(type) {
 	
-	
+	std::cout << type <<" has been created" << std::endl;
 }
 
 Weapon::~Weapon() {
 	
-	
+	std::cout << this->_type << " has been deleted" << std::endl;
 }
 
 std::string const & Weapon::getType() {
