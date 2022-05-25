@@ -24,7 +24,7 @@ public:
 	~HumanB();
 
 	void	attack();
-	void	setWeapon(Weapon weapon);
+	void	setWeapon(Weapon& weapon);
 
 private:
 	std::string _name;

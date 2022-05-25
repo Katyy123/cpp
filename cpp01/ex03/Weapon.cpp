@@ -24,11 +24,8 @@ Weapon::~Weapon() {
 
 std::string const & Weapon::getType() {
 
-	std::string& typeRef = this->_type;
-	return typeRef;
+	return this->_type;
 }
-
-//testare se la ref ritornata è const
 
 void	Weapon::setType(std::string newType) {
 
