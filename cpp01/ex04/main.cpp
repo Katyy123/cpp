@@ -17,7 +17,7 @@ bool    fileCheck(std::ifstream& filestream) {
 bool    argCheck1(std::string str) {
 
     if (str.empty()) {
-        std::cerr << "Error: Arguments can't be empty" << std::endl;
+        std::cerr << "Error: The string to be replaced can't be empty" << std::endl;
         return 0;
     }
     for (long unsigned i = 0; i < str.length(); i++) {

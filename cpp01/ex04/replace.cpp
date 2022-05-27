@@ -8,9 +8,6 @@ bool    ft_replace(std::string infile, std::ifstream& in_stream, std::string s1,
     std::string     outfile;
     char*           char_outfile;
     std::size_t     pos;
-    std::string     unused;//delete
-    //int             i = 0;//delete
-    //int             j = 0;//delete
 
     outfile = infile;
     outfile.append(".replace");
@@ -20,9 +17,6 @@ bool    ft_replace(std::string infile, std::ifstream& in_stream, std::string s1,
         std::cerr << "Error: problem with outfile" << std::endl;
         return 0;
     }
-    //while (getline(in_stream, unused))//delete
-        //i++;//delete
-    //std::cout << i << std::endl;//delete
     while (getline(in_stream, line)) {
         while (true) {
             pos = line.find(s1);
@@ -33,10 +27,8 @@ bool    ft_replace(std::string infile, std::ifstream& in_stream, std::string s1,
         out_stream << line.substr(0, pos) << s2;
         line = line.substr(pos + s1.length());
         }
-        //std::cout << j << std::endl;//delete
-        //if (j < i)//delete
+        if (in_stream.peek() != EOF)
             out_stream << std::endl;
-       // j++;//delete
     }
     if (in_stream.peek() != EOF) {
         std::cerr << "Error: getline" << std::endl;
