@@ -1,8 +1,9 @@
-NAME = Sed_is_for_losers
+NAME = tests
+
+PROGRAM_DIR = ../
 
 SRCS = \
-		main.cpp\
-		replace.cpp\
+		tests.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -24,14 +25,19 @@ RESET = '\x1b[0m'
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) program
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 	@echo $(GREEN)$(CURSIVE)"\nAll files have been compiled"$(RESET)
 
+program: 
+	@printf "Compiling program to test..." && make -C $(PROGRAM_DIR)
+
 clean:
+	@make clean -C $(PROGRAM_DIR)
 	rm -f $(OBJS)
 
 fclean: clean
+	@make fclean -C $(PROGRAM_DIR)
 	rm -f $(NAME)
 
 re: fclean all

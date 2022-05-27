@@ -8,6 +8,10 @@
 #include <fstream>
 #include <cctype>
 
-bool    ft_replace(std::ifstream& in_stream);
+bool    fileCheck(std::ifstream& filestream);
+bool    argCheck1(std::string str);
+bool    argCheck2(std::string str);
+bool    ft_replace(std::string infile, std::ifstream& in_stream, std::string s1, std::string s2);
+
 
 #endif
