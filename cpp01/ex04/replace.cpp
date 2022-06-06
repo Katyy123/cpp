@@ -24,8 +24,8 @@ bool    ft_replace(std::string infile, std::ifstream& in_stream, std::string s1,
                 out_stream << line;
                 break;
             }
-        out_stream << line.substr(0, pos) << s2;
-        line = line.substr(pos + s1.length());
+            out_stream << line.substr(0, pos) << s2;
+            line = line.substr(pos + s1.length());
         }
         if (in_stream.peek() != EOF)
             out_stream << std::endl;

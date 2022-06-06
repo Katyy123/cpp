@@ -25,28 +25,28 @@ echo
 
 echo -e "--- Replacing all spaces by '#' in file1 ---"
 $PROGRAM ./tests/file1 " " "#"
-diff --color ./tests/file1 ./tests/file1.replace
+diff ./tests/file1 ./tests/file1.replace
 rm ./tests/file1.replace
 echo
 echo
 
 echo -e "--- Replacing '44' by '42' in file2 ---"
 $PROGRAM ./tests/file2 "44" "42"
-diff --color ./tests/file2 ./tests/file2.replace
+diff ./tests/file2 ./tests/file2.replace
 rm ./tests/file2.replace
 echo
 echo
 
 echo -e "--- Replacing 'gatti' by 'cuccioli' in file3 ---"
 $PROGRAM ./tests/file3 "gatti" "cuccioli"
-diff --color ./tests/file3 ./tests/file3.replace
+diff ./tests/file3 ./tests/file3.replace
 rm ./tests/file3.replace
 echo
 echo
 
 echo -e "--- Replacing '4' by nothing in file4 ---"
 $PROGRAM ./tests/file4 "4" ""
-diff --color ./tests/file4 ./tests/file4.replace
+diff ./tests/file4 ./tests/file4.replace
 rm ./tests/file4.replace
 echo
 echo
@@ -58,7 +58,7 @@ echo
 
 echo -e "--- Replacing 'gatti in fila' by 'mici in coda batuffolosa' in file_with_blank_lines ---"
 $PROGRAM ./tests/file_with_blank_lines "gatti in fila" "mici in coda batuffolosa"
-diff --color ./tests/file_with_blank_lines ./tests/file_with_blank_lines.replace
+diff ./tests/file_with_blank_lines ./tests/file_with_blank_lines.replace
 rm ./tests/file_with_blank_lines.replace
 echo
 
