@@ -1,11 +1,12 @@
 NAME = Sed_is_for_losers
 
 SRCS = \
-		main.cpp
+		main.cpp\
+		replace.cpp\
 
 OBJS = $(SRCS:.cpp=.o)
 
-CC = clang++
+CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
