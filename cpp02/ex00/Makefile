@@ -6,11 +6,11 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 19:29:47 by cfiliber          #+#    #+#              #
-#    Updated: 2022/06/06 19:31:32 by cfiliber         ###   ########.fr        #
+#    Updated: 2022/06/09 18:16:46 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = toModify
+NAME = Fixed
 
 SRCS = \
 		main.cpp\
