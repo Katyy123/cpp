@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 20:33:12 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/06/09 21:05:19 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/06/10 17:08:47 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include <cmath>
+
+#define EPSILON 390625
 
 class Fixed {
 
@@ -37,6 +39,16 @@ class Fixed {
 		Fixed operator-(Fixed const & instance) const;
 		Fixed operator*(Fixed const & instance) const;
 		Fixed operator/(Fixed const & instance) const;
+
+		Fixed & operator++(void);
+		Fixed	operator++(int);
+		Fixed & operator--(void);
+		Fixed	operator--(int);
+		
+		static Fixed & min(Fixed & instance1, Fixed & instance2);
+		static Fixed const & min(Fixed const & instance1, Fixed const & instance2);
+		static Fixed & max(Fixed & instance1, Fixed & instance2);
+		static Fixed const & max(Fixed const & instance1, Fixed const & instance2);
 
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
