@@ -6,20 +6,14 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:48:23 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/06/11 20:57:44 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:19:03 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
+#include "Fixed.hpp"
 
-int bsp( Point const a, Point const b, Point const c, Point const point) {
-	
-	/* 
-  a, b, c: The vertices of our beloved triangle.
-• point: The point to check.
-• Returns: True if the point is inside the triangle. False otherwise.
-Thus, if the point is a vertex or on edge, it will return False.
-*/
+bool bsp( Point const a, Point const b, Point const c, Point const point) {
 
 	Fixed	inter_ab_x; // x-coordinate of the intersection between half straight line to the right from POINT and AB side of the triangle
 	Fixed	inter_bc_x;
@@ -27,44 +21,56 @@ Thus, if the point is a vertex or on edge, it will return False.
 	int		count = 0;
 	Fixed	min_y;
 	Fixed	max_y;
+	bool	is_ab_horiz = 0;
+	bool	is_bc_horiz = 0;
+	bool	is_ca_horiz = 0;
 	
-	// min_y = min(a.get_y(), b.get_y());
-	// max_y = max(max(a.get_y(), b.get_y()), min(a.get_y(), c.get_y()));
 	min_y = fmin(fmin(a.get_y().toFloat(), b.get_y().toFloat()), fmin(a.get_y().toFloat(), c.get_y().toFloat()));
 	max_y = fmax(fmax(a.get_y().toFloat(), b.get_y().toFloat()), fmax(a.get_y().toFloat(), c.get_y().toFloat()));
-	if (! (point.get_y() > min_y && point.get_y() < max_y) )
-		return -1;
-
-	// if (a.get_y() != b.get_y()) { //not a line "//" asse x or "//" asse y
-	// 	if ((point.get_x() - a.get_x()) / (b.get_x() - a.get_x()) == (point.get_y() - a.get_y()) / (b.get_y() - a.get_y())) // math formula: point belongs to straight line between 2 points
-	// }
-	if (a.get_y() != b.get_y()) {//not a line "//" asse x
+	if (! (point.get_y() > min_y && point.get_y() < max_y) ) {
+		std::cout << std::endl;
+		std::cout << "Point above or under the triangle or at the same height as the highest or lowest vertex" << std::endl;
+		return 0;
+	}
+	
+	if (a.get_y() != b.get_y()) //not a line "//" asse x
 		inter_ab_x = ( (point.get_y() - a.get_y()) / (b.get_y() - a.get_y()) ) * (b.get_x() - a.get_x()) + a.get_x(); // math formula: intersection between 2 straight lines (1 is "//" asse x)
-	}
-	if (b.get_y() != c.get_y()) {//not a line "//" asse x
+	else
+		is_ab_horiz = 1;
+	if (b.get_y() != c.get_y()) //not a line "//" asse x
 		inter_bc_x = ( (point.get_y() - b.get_y()) / (c.get_y() - b.get_y()) ) * (c.get_x() - b.get_x()) + b.get_x(); // math formula: intersection between 2 straight lines (1 is "//" asse x)
-	}
-	if (c.get_y() != a.get_y()) {//not a line "//" asse x
+	else
+		is_bc_horiz = 1;
+	if (c.get_y() != a.get_y()) //not a line "//" asse x
 		inter_ca_x = ( (point.get_y() - c.get_y()) / (a.get_y() - c.get_y()) ) * (a.get_x() - c.get_x()) + c.get_x(); // math formula: intersection between 2 straight lines (1 is "//" asse x)
+	else
+		is_ca_horiz = 1;
+	
+	std::cout << std::endl;
+	std::cout << "inter_ab_x: " << inter_ab_x << std::endl;
+	std::cout << "inter_bc_x: " << inter_bc_x << std::endl;
+	std::cout << "inter_ca_x: " << inter_ca_x << std::endl;
+
+	std::cout << std::boolalpha << "is_ab_horiz: " << is_ab_horiz << std::endl;
+	std::cout << std::boolalpha << "is_bc_horiz: " << is_bc_horiz << std::endl;
+	std::cout << std::boolalpha << "is_ca_horiz: " << is_ca_horiz << std::endl;
+	
+	if ((point.get_x() == inter_ab_x && is_ab_horiz == 0 )|| (point.get_x() == inter_bc_x && is_bc_horiz == 0) || (point.get_x() == inter_ca_x && is_ca_horiz == 0)) {
+		std::cout << "Point on the border" << std::endl;
+		return 0;
 	}
 	
-	std::cout << "inter_ab_x: " << inter_ab_x << std::endl;//stampa inter_ab_x
-	std::cout << "inter_bc_x: " << inter_bc_x << std::endl; //stampa inter_bc_x
-	std::cout << "inter_ca_x: " << inter_ca_x << std::endl; //stampa inter_ca_x
-	
-	if (point.get_x() == inter_ab_x || point.get_x() == inter_bc_x || point.get_x() == inter_ca_x)
-		return -2;
-	
-	if (inter_ab_x > point.get_x())
+	if (is_ab_horiz == 0 && inter_ab_x > point.get_x() && inter_ab_x <= fmax(a.get_x().toFloat(), b.get_x().toFloat()))
 		count++;
-	if (inter_bc_x != inter_ab_x && inter_bc_x > point.get_x())
+	if (is_bc_horiz == 0 && inter_bc_x != inter_ab_x && inter_bc_x > point.get_x() && inter_bc_x <= fmax(b.get_x().toFloat(), c.get_x().toFloat()))
 		count++;
-	if (inter_ca_x != inter_ab_x && inter_ca_x != inter_bc_x && inter_ca_x > point.get_x())
+	if (is_ca_horiz == 0 && inter_ca_x != inter_ab_x && inter_ca_x != inter_bc_x && inter_ca_x > point.get_x() && inter_ca_x <= fmax(c.get_x().toFloat(), a.get_x().toFloat()))
 		count++;
 	if (count == 1)
 		return 1;
 
-	return -3;
+	std::cout << "Point on the left or the right of the triangle" << std::endl;
+	return 0;
 }
 	
 

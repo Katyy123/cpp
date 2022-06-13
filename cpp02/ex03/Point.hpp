@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:48:06 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/06/11 20:16:42 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:45:30 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ class Point {
 		//anything else useful
 };
 
-int bsp( Point const a, Point const b, Point const c, Point const point);
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif
