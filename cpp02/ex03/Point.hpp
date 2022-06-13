@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:48:06 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/06/13 16:45:30 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:49:27 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,10 @@ class Point {
 
 		Fixed get_x(void) const;
 		Fixed get_y(void) const;
-
-		//anything else useful
 	
 	private:
 		Fixed const _x;
 		Fixed const _y;
-		//anything else useful
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);

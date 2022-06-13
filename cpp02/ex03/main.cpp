@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 18:48:12 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/06/13 17:14:49 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:49:06 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int	main(void)
 {
 	std::cout << std::boolalpha
-	//std::cout
 
 		<< "a(2, 2), b(7, 4), c(2, 7), point(4, 5): "
 		<< bsp(Point(2, 2), Point(7, 4), Point(2, 7), Point(4, 5)) << std::endl
@@ -45,22 +44,6 @@ int	main(void)
 		<< "a(-3, 3), b(1, 1), c(-4, -2), point(-5, 0): "
 		<< bsp(Point(-3, 3), Point(1, 1), Point(-4, -2), Point(-5, 0)) << std::endl
 		<< std::endl;
-	// Point	a(0, 0);
-	// Point	b(20, 0);
-	// Point	c(10, 30);
-	// Point	in(10, 15);
-	// Point	out(30, 50);
-
-	// std::cout << "Point \"in\" created at x-" << in.get_x() << " y-" << in.get_y() << std::endl;
-	// std::cout << "Point \"out\" created at x-" << out.get_x() << " y-" << out.get_y() << std::endl;
-	// if (bsp(a, b, c, in))
-	// 	std::cout << "\"in\" is in the triangle" << std::endl;
-	// else
-	// 	std::cout << "\"in\" is out of the triangle" << std::endl;
-	// if (bsp(a, b, c, out))
-	// 	std::cout << "\"out\" is in the triangle" << std::endl;
-	// else
-	// 	std::cout << "\"out\" is out of the triangle" << std::endl;
 	
-	// return 0;
+	return 0;
 }
