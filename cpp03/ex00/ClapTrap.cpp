@@ -17,10 +17,9 @@ ClapTrap::ClapTrap() : _hitPoints(MAX_HIT_POINTS), _energyPoints(MAX_ENERGY_POIN
 	std::cout << "Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(MAX_HIT_POINTS), _energyPoints(MAX_ENERGY_POINTS), _attackDamage(0) {
 	
 	std::cout << "Parametric constructor called" << std::endl;
-	this->_name = name;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & claptrap) {
@@ -43,6 +42,7 @@ ClapTrap & ClapTrap::operator=(ClapTrap const & claptrap) {
 		this->_energyPoints = claptrap.getEnergyPoints();
 		this->_attackDamage = claptrap.getAttackDamage();
 	}
+	return *this;
 }
 
 std::string const & ClapTrap::getName(void) const{
@@ -82,46 +82,63 @@ void	ClapTrap::setEnergyPoints(unsigned int amount) {
 
 void	ClapTrap::setAttackDamage(unsigned int amount) {
 
+	std::cout << "Attack damage of ClapTrap " << this->_name << " has been set to " << amount;
+	std::cout << std::endl;
 	this->_attackDamage = amount;
 }
 
 void ClapTrap::attack(const std::string& target) {
 
-	if (this->_hitPoints = 0) {
+	if (this->_hitPoints == 0) {
 		std::cout << "ClapTrap " << this->_name << " can't attack: No hit points left" << std::endl;
 		return;
 	}
-	if (this->_energyPoints > 0 && [target_class].getHitPoints() - this->_attackDamage >= 0) {
-		[target_class].takeDamage(this->_attackDamage);
+	if (this->_energyPoints > 0) {// && [target_class].getHitPoints() - this->_attackDamage >= 0) {
+		//[target_class].takeDamage(this->_attackDamage);
 		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!";
 		std::cout << std::endl;
 		this->_energyPoints--;
 	}
-	else if (this->_energyPoints > 0 && [target_class].getHitPoints() > 0) {
-		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << [target_class].getHitPoints() << " points of damage!";
-		std::cout << std::endl;
-		[target_class].takeDamage(this->_attackDamage);
-		this->_energyPoints--;
-	}
+	// else if (this->_energyPoints > 0 && [target_class].getHitPoints() > 0) {
+	// 	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << [target_class].getHitPoints() << " points of damage!";
+	// 	std::cout << std::endl;
+	// 	[target_class].takeDamage(this->_attackDamage);
+	// 	this->_energyPoints--;
+	// }
 	else if (!(this->_energyPoints > 0))
 		std::cout << "ClapTrap " << this->_name << " can't attack: No energy points left" << std::endl;
-	else if (!([target_class].getHitPoints() > 0))
-		std::cout << "ClapTrap " << this->_name << " can't attack: Target has no hit points left" << std::endl;
+// 	else if (!([target_class].getHitPoints() > 0))
+// 		std::cout << "ClapTrap " << this->_name << " can't attack: Target has no hit points left" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
 
-	if (this->_hitPoints - amount >= 0)
+	if (this->_hitPoints >= amount) {
 		this->_hitPoints -= amount;
-	else
+		std::cout << "ClapTrap " << this->_name << " has lost " << amount << " hit points";
+		std::cout << std::endl;
+	}
+	else if (this->_hitPoints > 0) {
+		std::cout << "ClapTrap " << this->_name << " has lost " << this->_hitPoints << " hit points";
 		this->setHitPoints(0);
+		std::cout << std::endl;
+	}
+	else {
+		std::cout << "ClapTrap " << this->_name << " has " << this->_hitPoints << " no hit points, so it can't lose any more";
+		std::cout << std::endl;
+		return;
+	}
 	std::cout << "Now ClapTrap " << this->_name << " has " << this->_hitPoints << " hit points left " << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
 
-	if (this->_hitPoints = 0) {
+	if (this->_hitPoints == 0) {
 		std::cout << "ClapTrap " << this->_name << " can't be repaired: No hit points left" << std::endl;
+		return;
+	}
+	if (this->_hitPoints == MAX_HIT_POINTS) {
+		std::cout << "ClapTrap " << this->_name << " doesn't need to be repaired" << std::endl;
 		return;
 	}
 	if (this->_energyPoints > 0 && this->_hitPoints + amount <= MAX_HIT_POINTS) {

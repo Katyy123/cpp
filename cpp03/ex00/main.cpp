@@ -11,3 +11,127 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+
+int main() {
+
+    ClapTrap bim("bim");
+    ClapTrap bom("bom");
+    ClapTrap bum("bum");
+    ClapTrap bem("bem");
+
+    std::cout << std::endl;
+    bim.attack("bom");
+    bom.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bom.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.setAttackDamage(6);
+    std::cout << std::endl;
+
+    bim.attack("bom");
+    bom.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bom.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.setAttackDamage(12);
+    std::cout << std::endl;
+
+    bim.attack("bom");
+    bom.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bom.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.setAttackDamage(1);
+    std::cout << std::endl;
+
+    bim.attack("bum");
+    bum.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.attack("bum");
+    bum.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.attack("bum");
+    bum.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.attack("bum");
+    bum.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.attack("bum");
+    bum.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.attack("bum");
+    bum.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.attack("bum");
+    bum.takeDamage (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bim.getAttackDamage());
+    std::cout << std::endl;
+
+    bim.attack("bum");
+    std::cout << std::endl;
+
+    bem.setAttackDamage(1);
+    std::cout << std::endl;
+
+    bem.attack("bum");
+    bum.takeDamage (bem.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bem.getAttackDamage());
+    std::cout << std::endl;
+
+    bem.attack("bum");
+    bum.takeDamage (bem.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bem.getAttackDamage());
+    std::cout << std::endl;
+
+    bem.attack("bum");
+    bum.takeDamage (bem.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bem.getAttackDamage());
+    std::cout << std::endl;
+
+    bem.attack("bum");
+    bum.takeDamage (bem.getAttackDamage());
+    std::cout << std::endl;
+
+    bum.beRepaired (bem.getAttackDamage());
+    std::cout << std::endl;
+
+    return 0;
+}
