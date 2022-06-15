@@ -93,22 +93,13 @@ void ClapTrap::attack(const std::string& target) {
 		std::cout << "ClapTrap " << this->_name << " can't attack: No hit points left" << std::endl;
 		return;
 	}
-	if (this->_energyPoints > 0) {// && [target_class].getHitPoints() - this->_attackDamage >= 0) {
-		//[target_class].takeDamage(this->_attackDamage);
+	if (this->_energyPoints > 0) {
 		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!";
 		std::cout << std::endl;
 		this->_energyPoints--;
 	}
-	// else if (this->_energyPoints > 0 && [target_class].getHitPoints() > 0) {
-	// 	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << [target_class].getHitPoints() << " points of damage!";
-	// 	std::cout << std::endl;
-	// 	[target_class].takeDamage(this->_attackDamage);
-	// 	this->_energyPoints--;
-	// }
 	else if (!(this->_energyPoints > 0))
 		std::cout << "ClapTrap " << this->_name << " can't attack: No energy points left" << std::endl;
-// 	else if (!([target_class].getHitPoints() > 0))
-// 		std::cout << "ClapTrap " << this->_name << " can't attack: Target has no hit points left" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
