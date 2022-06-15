@@ -63,6 +63,34 @@ void ScavTrap::attack(const std::string& target) {
 		std::cout << "ScavTrap " << this->_name << " can't attack: No energy points left" << std::endl;
 }
 
+void ScavTrap::beRepaired(unsigned int amount) {
+
+	if (this->_hitPoints == 0) {
+		std::cout << "ClapTrap " << this->_name << " can't be repaired: No hit points left" << std::endl;
+		return;
+	}
+	if (this->_hitPoints == MAX_HIT_POINTS_SCAV) {
+		std::cout << "ClapTrap " << this->_name << " doesn't need to be repaired" << std::endl;
+		return;
+	}
+	if (this->_energyPoints > 0 && this->_hitPoints + amount <= MAX_HIT_POINTS_SCAV) {
+		this->_hitPoints += amount;
+		std::cout << "ClapTrap " << this->_name << " has been repaired, adding " << amount << " points to its hit points";
+		std::cout << std::endl;
+		this->_energyPoints--;
+	}
+	else if (!(this->_energyPoints > 0)) {
+		std::cout << "ClapTrap " << this->_name << " can't be repaired: No energy points left" << std::endl;
+		return;
+	}
+	else if (!(this->_hitPoints + amount <= MAX_HIT_POINTS_SCAV)) {
+		this->setHitPoints(MAX_HIT_POINTS_SCAV);
+		std::cout << "ClapTrap " << this->_name << " has been repaired, adding " << MAX_HIT_POINTS_SCAV - this->_hitPoints << " points to its hit points";
+		std::cout << std::endl;
+	}
+	std::cout << "Now ClapTrap " << this->_name << " has " << this->_hitPoints << " hit points " << std::endl;
+}
+
 void ScavTrap::guardGate(void) {
 
     std::cout << "ScavTrap " << this->_name << " is now in Gate keeper mode" << std::endl;
