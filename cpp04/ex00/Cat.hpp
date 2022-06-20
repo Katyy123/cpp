@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 16:17:58 by cfiliber          #+#    #+#             */
-/*   Updated: 2022/06/16 17:03:20 by cfiliber         ###   ########.fr       */
+/*   Updated: 2022/06/20 15:39:55 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ class Cat : public Animal {
 
 	public:
 		Cat();
-		Cat(std::string type);
 		Cat(Cat const & cat);
-		~Cat();
+		virtual ~Cat();
 
 		Cat & operator=(Cat const & cat);
 		
-		virtual void	makeSound();
+		virtual void	makeSound() const;
 		
 };
 

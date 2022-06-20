@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 16:09:24 by cfiliber          #+#    #+#              #
-#    Updated: 2022/06/16 16:17:50 by cfiliber         ###   ########.fr        #
+#    Updated: 2022/06/20 15:49:59 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,14 @@ SRCS = \
 		Animal.cpp\
 		Dog.cpp\
 		Cat.cpp\
+		WrongAnimal.cpp\
+		WrongCat.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g #-fsanitize=address
 
 GREEN = '\x1b[32m'
 YELLOW = '\x1b[33m'
