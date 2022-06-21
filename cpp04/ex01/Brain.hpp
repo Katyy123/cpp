@@ -18,18 +18,21 @@
 #define ANIMALS_NUM 4
 
 class Brain {
-
-	private:
-		static const int	_ideasNum = 100;
 	
 	public:
 		Brain();
 		Brain(Brain const & brain);
-		virtual ~Brain();
+		~Brain();
 
 		Brain & operator=(Brain const & brain);
 
+		void printIdeas(void) const;
+		void setIdea(std::string idea);
+
+	private:
+		static const int	_ideasNum = 100;
 		std::string _ideas[Brain::_ideasNum];
+		int _index;
 		
 };
 

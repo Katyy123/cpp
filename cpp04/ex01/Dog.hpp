@@ -34,4 +34,5 @@ class Dog : public Animal {
 		Brain* _brain;
 		
 };
+
 #endif

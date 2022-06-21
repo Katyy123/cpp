@@ -22,8 +22,7 @@ Dog::Dog() : Animal() {
 Dog::Dog(Dog const & dog) : Animal(dog) {
 
 	std::cout << "Dog copy constructor called" << std::endl; 
-	*this = dog;
-	//delete this->_brain;
+	this->type_ = dog.getType();
 	this->_brain = new Brain(*dog.getBrain());
 }
 
@@ -38,6 +37,7 @@ Dog & Dog::operator=(Dog const & dog) {
 	std::cout << "Dog copy assignment operator called" << std::endl;
 	if (this != &dog) {
 		this->type_ = dog.getType();
+		delete this->_brain;
 		this->_brain = new Brain(*dog.getBrain());
 	}
 	return *this;
