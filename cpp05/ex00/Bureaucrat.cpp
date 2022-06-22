@@ -28,10 +28,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
     }
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const & bureaucrat) : _name(bureaucrat._name) {
+Bureaucrat::Bureaucrat(Bureaucrat const & bureaucrat) : _name(bureaucrat.getName()) {
 
     std::cout << "Copy constructor called" << std::endl;
-    this->_grade = bureaucrat._grade;
+    this->_grade = bureaucrat.getGrade();
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -42,7 +42,7 @@ Bureaucrat::~Bureaucrat() {
 Bureaucrat & Bureaucrat::operator=(Bureaucrat const & bureaucrat) {
 
     if (this != &bureaucrat)
-        this->_grade = bureaucrat._grade;
+        this->_grade = bureaucrat.getGrade();
     return *this;
 }
 
