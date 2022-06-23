@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/23 16:07:12 by cfiliber          #+#    #+#             */
+/*   Updated: 2022/06/23 20:52:58 by cfiliber         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
@@ -95,12 +107,17 @@ void Bureaucrat::decrementGrade() {
     }
 }
 
-void Bureaucrat::signForm(Form const & form) {
+void Bureaucrat::signForm(AForm const & form) {
 
     if (form.getIsSigned() == 1)
         std::cout << "Bureaucrat " << this->_name << " signed form " << form.getName() << std::endl;
     else
         std::cout << "Bureaucrat " << this->_name << " couldn't sign form " << form.getName() << std::endl;
+}
+
+void Bureaucrat::executeForm(Form const & form) {
+    
+    
 }
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & bureaucrat) {

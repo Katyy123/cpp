@@ -1,9 +1,24 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/23 16:07:28 by cfiliber          #+#    #+#              #
+#    Updated: 2022/06/23 17:36:49 by cfiliber         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = Form
 
 SRCS = \
 		main.cpp\
 		Bureaucrat.cpp\
-		Form.cpp
+		Form.cpp\
+		ShrubberyCreationForm.cpp\
+		RobotomyRequestForm.cpp\
+		PresidentialPardonForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
