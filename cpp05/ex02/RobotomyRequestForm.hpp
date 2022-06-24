@@ -16,8 +16,6 @@
 # include <iostream>
 # include <stdexcept>
 # include <cstdlib>
-//# include <iomanip>
-//# include <string>
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
 
