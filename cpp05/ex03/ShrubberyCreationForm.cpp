@@ -105,12 +105,4 @@ std::ostream & operator<<(std::ostream & o, ShrubberyCreationForm const & form) 
     o << "grade required to execute: " << form.getGradeToExec() << std::endl;
     o << std::endl;
     return o;
-    
-    // o << std::endl;
-    // o << form.getName() << " ShrubberyCreationForm:" << std::endl;
-    // o << std::boolalpha << "is signed: " << form.getIsSigned() << std::endl;
-    // o << "grade required to sign: " << form.getGradeToSign() << std::endl;
-    // o << "grade required to execute: " << form.getGradeToExec() << std::endl;
-    // o << std::endl;
-    // return o;
 }

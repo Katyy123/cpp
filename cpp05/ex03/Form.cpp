@@ -150,30 +150,6 @@ void AForm::execute(Bureaucrat const & executor) const {
 	if (executor.getGrade() > this->getGradeToExec())
 		throw GradeTooLowException();
 	this->executeConcrete();
-    
-    // try {
-    //     if (this->getIsSigned() == 0)
-    //         throw FormNotSignedException();
-    //     else {
-    //         try {
-    //             if (executor.getGrade() > this->getGradeToExec())
-    //                 throw GradeTooLowException();
-    //             else {
-    //                 this->executeConcrete();
-
-    //                 executor.executeForm(*this);//add executeForm() in some way. Execute form shold check if that bureaucrat has executed the form
-    //             }
-    //         }
-    //         catch (GradeTooLowException & e) {
-    //             std::cout << "Bureaucrat " << executor.getName() << ": " << e.what();
-    //             //add executeForm() in some way. Execute form shold check if that bureaucrat has executed the form
-    //         }
-    //     }   
-    // }
-    // catch (FormNotSignedException & e) {
-    //     std::cout << "Form " << this->getName() << ": " << e.what();
-    //     //add executeForm() in some way. Execute form shold check if that bureaucrat has executed the form
-    // }
 }
 
 std::ostream & operator<<(std::ostream & o, AForm const & form) {

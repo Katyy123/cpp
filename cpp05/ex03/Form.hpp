@@ -23,7 +23,7 @@ class AForm {
         AForm();
         AForm(std::string name, std::string target, int gradeToSign, int gradeToExec);
         AForm(AForm const & form);
-        ~AForm();
+        virtual ~AForm();
 
         AForm & operator=(AForm const & form);
 

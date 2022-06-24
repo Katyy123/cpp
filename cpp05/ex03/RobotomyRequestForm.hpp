@@ -16,8 +16,6 @@
 # include <iostream>
 # include <stdexcept>
 # include <cstdlib>
-//# include <iomanip>
-//# include <string>
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
 
@@ -27,7 +25,7 @@ class RobotomyRequestForm : public AForm {
         RobotomyRequestForm();
         RobotomyRequestForm(std::string target);
         RobotomyRequestForm(RobotomyRequestForm const & form);
-        ~RobotomyRequestForm();
+        virtual ~RobotomyRequestForm();
 
         RobotomyRequestForm & operator=(RobotomyRequestForm const & form);
 
