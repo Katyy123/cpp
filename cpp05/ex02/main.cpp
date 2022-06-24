@@ -18,28 +18,39 @@
 
 int main() {
 
-    // Form form_1("form_1", 42, 30);
-    // Form form_2("form_2", 0, 0);
-    // Form form_3("form_3", 151, 167);
-    // Form form_4("form_4", 4, 102);
+    ShrubberyCreationForm form_1("home");
+    RobotomyRequestForm form_2("human");
+    PresidentialPardonForm form_3("Pinco Pallino");
     std::cout << std::endl;
 
-    Bureaucrat michela("Michela", 40);
-    Bureaucrat luca("Luca", 51);
+    Bureaucrat michela("Michela", 2);
+    Bureaucrat luca("Luca", 147);
     
-    // std::cout << form_1;
-    // std::cout << form_4;
-
+    std::cout << form_1;
+    std::cout << form_2;
+    std::cout << form_3;
+    
     std::cout << michela;
     std::cout << luca;
     std::cout << std::endl;
 
-    // form_1.beSigned(michela);
-    // form_1.beSigned(luca);
-    // form_4.beSigned(luca);
+    michela.executeForm(form_1);
+    form_1.beSigned(michela);
+    michela.executeForm(form_1);
+    luca.executeForm(form_1);
+    std::cout << std::endl;
 
-    // std::cout << form_1;
-    // std::cout << form_4;
+    michela.executeForm(form_2);
+    form_2.beSigned(michela);
+    michela.executeForm(form_2);
+    luca.executeForm(form_2);
+    std::cout << std::endl;
+
+    michela.executeForm(form_3);
+    form_3.beSigned(michela);
+    michela.executeForm(form_3);
+    luca.executeForm(form_3);
+    std::cout << std::endl;
 
     return 0;
 }

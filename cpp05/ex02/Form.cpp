@@ -145,34 +145,42 @@ void AForm::beSigned(Bureaucrat & bureaucrat) {
 
 void AForm::execute(Bureaucrat const & executor) const {
 
-    try {
-        if (this->getIsSigned() == 0)
-            throw FormNotSignedException();
-        else {
-            try {
-                if (executor.getGrade() > this->getGradeToExec())
-                    throw GradeTooLowException();
-                else {
-                    executeConcrete();
-                    //add executeForm() in some way. Execute form shold check if that bureaucrat has executed the form
-                }
-            }
-            catch (GradeTooLowException & e) {
-                std::cout << "Bureaucrat " << executor.getName() << ": " << e.what();
-                //add executeForm() in some way. Execute form shold check if that bureaucrat has executed the form
-            }
-        }   
-    }
-    catch (FormNotSignedException & e) {
-        std::cout << "Form " << this->getName() << ": " << e.what();
-        //add executeForm() in some way. Execute form shold check if that bureaucrat has executed the form
-    }
+    if (!this->getIsSigned())
+		throw FormNotSignedException();
+	if (executor.getGrade() > this->getGradeToExec())
+		throw GradeTooLowException();
+	this->executeConcrete();
+    
+    // try {
+    //     if (this->getIsSigned() == 0)
+    //         throw FormNotSignedException();
+    //     else {
+    //         try {
+    //             if (executor.getGrade() > this->getGradeToExec())
+    //                 throw GradeTooLowException();
+    //             else {
+    //                 this->executeConcrete();
+
+    //                 executor.executeForm(*this);//add executeForm() in some way. Execute form shold check if that bureaucrat has executed the form
+    //             }
+    //         }
+    //         catch (GradeTooLowException & e) {
+    //             std::cout << "Bureaucrat " << executor.getName() << ": " << e.what();
+    //             //add executeForm() in some way. Execute form shold check if that bureaucrat has executed the form
+    //         }
+    //     }   
+    // }
+    // catch (FormNotSignedException & e) {
+    //     std::cout << "Form " << this->getName() << ": " << e.what();
+    //     //add executeForm() in some way. Execute form shold check if that bureaucrat has executed the form
+    // }
 }
 
 std::ostream & operator<<(std::ostream & o, AForm const & form) {
 
     o << std::endl;
-    o << form.getName() << " AForm:" << std::endl;
+    o << "Form " << form.getName() << ": " << std::endl;
+    o << "target: " << form.getTarget() << std::endl;
     o << std::boolalpha << "is signed: " << form.getIsSigned() << std::endl;
     o << "grade required to sign: " << form.getGradeToSign() << std::endl;
     o << "grade required to execute: " << form.getGradeToExec() << std::endl;

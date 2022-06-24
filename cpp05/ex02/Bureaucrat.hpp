@@ -16,7 +16,7 @@
 # include <iostream>
 # include <stdexcept>
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 
@@ -45,7 +45,7 @@ class Bureaucrat {
         void decrementGrade();
 
         void signForm(AForm const & form);
-        void executeForm(Form const & form);
+        void executeForm(AForm const & form);
 
     private:
         const std::string _name;

@@ -55,7 +55,7 @@ class AForm {
         void execute(Bureaucrat const & executor) const;
         
     protected:
-        virtual void executeConcrete() const = 0;
+        virtual void executeConcrete() const = 0; 
 
     private:
         const std::string _name;

@@ -10,3 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
+
+# include <iostream>
+# include <stdexcept>
+# include "Bureaucrat.hpp"
+# include "Form.hpp"
+
+class PresidentialPardonForm : public AForm {
+
+    public:
+        PresidentialPardonForm();
+        PresidentialPardonForm(std::string target);
+        PresidentialPardonForm(PresidentialPardonForm const & form);
+        ~PresidentialPardonForm();
+
+        PresidentialPardonForm & operator=(PresidentialPardonForm const & form);
+
+    protected:
+		virtual void executeConcrete() const;
+	
+};
+
+std::ostream & operator<<(std::ostream & o, PresidentialPardonForm const & form);
+
+#endif

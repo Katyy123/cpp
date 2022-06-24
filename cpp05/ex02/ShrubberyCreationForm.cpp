@@ -70,16 +70,47 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 
 void ShrubberyCreationForm::executeConcrete() const {
 
-    
+    std::fstream   fileStream;
+    std::string filename;
+    char * fileNameChar;
+    filename = this->getTarget() + "_shrubbery";
+    fileNameChar = const_cast<char*>(filename.c_str());
+    fileStream.open(fileNameChar, std::ios_base::out);
+    if (!fileStream.is_open()) {
+        std::cerr << "Error: problem with shrubbery file" << std::endl;
+        return;
+    }
+    fileStream <<
+"                                                     \n"
+"                                     $$$             \n"
+"       @@@@@@         &&&&&&         $$$$$$          \n"
+"    @@@@@@@@@@     &&&&&&&&&&&     $$$$$$$$$         \n"
+"    @@@@@@@@@      &&&&&&&&&&&&     $$$$$$           \n"
+"      @@@@@@         &&&&&&&         $$$$$           \n"
+"        ||             ||             ||             \n"
+"        ||             /|             ||      \\| /  \n"
+"        ||            / |             ||     \\||/// \n"
+"\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\/\\///";
+
+    fileStream.close();
 }
 
 std::ostream & operator<<(std::ostream & o, ShrubberyCreationForm const & form) {
 
     o << std::endl;
-    o << form.getName() << " ShrubberyCreationForm:" << std::endl;
+    o << "Form " << form.getName() << ": " << std::endl;
+    o << "target: " << form.getTarget() << std::endl;
     o << std::boolalpha << "is signed: " << form.getIsSigned() << std::endl;
     o << "grade required to sign: " << form.getGradeToSign() << std::endl;
     o << "grade required to execute: " << form.getGradeToExec() << std::endl;
     o << std::endl;
     return o;
+    
+    // o << std::endl;
+    // o << form.getName() << " ShrubberyCreationForm:" << std::endl;
+    // o << std::boolalpha << "is signed: " << form.getIsSigned() << std::endl;
+    // o << "grade required to sign: " << form.getGradeToSign() << std::endl;
+    // o << "grade required to execute: " << form.getGradeToExec() << std::endl;
+    // o << std::endl;
+    // return o;
 }

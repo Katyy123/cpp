@@ -10,3 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
+
+# include <iostream>
+# include <stdexcept>
+# include <cstdlib>
+//# include <iomanip>
+//# include <string>
+# include "Bureaucrat.hpp"
+# include "Form.hpp"
+
+class RobotomyRequestForm : public AForm {
+
+    public:
+        RobotomyRequestForm();
+        RobotomyRequestForm(std::string target);
+        RobotomyRequestForm(RobotomyRequestForm const & form);
+        ~RobotomyRequestForm();
+
+        RobotomyRequestForm & operator=(RobotomyRequestForm const & form);
+
+    protected:
+		virtual void executeConcrete() const;
+	
+};
+
+std::ostream & operator<<(std::ostream & o, RobotomyRequestForm const & form);
+
+#endif

@@ -14,6 +14,7 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include <iostream>
+# include <fstream>
 # include <stdexcept>
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
@@ -29,7 +30,7 @@ class ShrubberyCreationForm : public AForm {
         ShrubberyCreationForm & operator=(ShrubberyCreationForm const & form);
 
     protected:
-		void executeConcrete() const;
+		virtual void executeConcrete() const;
 	
 };
 
