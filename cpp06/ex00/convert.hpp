@@ -8,6 +8,8 @@
 #include <cctype>
 #include <sstream>
 #include <iomanip>
+//#include <ios>
+#include <cmath>
 
 #define FLOAT_MAX       3.40282e+38
 #define FLOAT_MIN       1.17549e-38
