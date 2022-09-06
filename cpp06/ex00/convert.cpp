@@ -136,6 +136,7 @@ void ft_convert(std::string str, char * char_str) {
 
     bool is_not_int = 0;
     bool is_there_point = 0;
+    char *end_ptr;
 
     for (long unsigned int i = 0; i < str.length(); i++) {
         if (std::isprint(str[i]) == 0) {
@@ -149,8 +150,10 @@ void ft_convert(std::string str, char * char_str) {
     }
     if (str.length() == 1 && !std::isdigit(str[0]))
         ft_convert_char(str);
-    else if (is_not_int == 0 && std::atoi(char_str) != 0)
-            ft_convert_int(str);
+    else if (is_not_int == 0 &&
+                (std::strtol(char_str, &end_ptr, 10) != 0 ||
+                static_cast<long unsigned int>(end_ptr - char_str) == str.length()))
+        ft_convert_int(str);
     else if ((is_there_point == 1 && str[str.length() - 1] == 'f' && std::atof(char_str) != 0.0) ||
                 str == "inff" || str == "-inff" || str == "0.0f" || str == "nanf")
         ft_convert_float(str, char_str);
@@ -174,101 +177,3 @@ int main(int argc, char **argv) {
         std::cout <<"Error: bad arguments" << std::endl;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// void	printType(const std::string& type)
-// {
-// 	std::cout << type << ": ";
-// }
-
-// void	cChar(double val)
-// {
-// 	char	c = static_cast<char>(val);
-
-// 	if (val != val || !isascii(val))
-// 		std::cout << "impossible";
-// 	else if (isprint(c))
-// 		std::cout << "'" << c << "'";
-// 	else
-// 		std::cout << "Non displayable";
-// }
-
-// void	cInt(double val)
-// {
-// 	int	i = static_cast<int>(val);
-
-// 	if (val != val || val < std::numeric_limits<int>::min() || val > std::numeric_limits<int>::max())
-// 		std::cout << "impossible";
-// 	else
-// 		std::cout << i;
-// }
-
-// void	cFloat(double val)
-// {
-// 	float	f = static_cast<float>(val);
-
-// 	std::cout << f << "f";
-// }
-
-// int main(int ac, char **av)
-// {
-// 	if (ac < 2)
-// 		return 1;
-
-// 	double	val = atof(av[1]);
-
-// 	std::cout.precision(1);
-// 	std::cout << std::fixed;
-
-// 	printType("char");
-// 	cChar(val);
-// 	std::cout << std::endl;
-
-// 	printType("int");
-// 	cInt(val);
-// 	std::cout << std::endl;
-
-// 	printType("float");
-// 	cFloat(val);
-// 	std::cout << std::endl;
-
-// 	printType("double");
-// 	std::cout << val << std::endl;
-// }
