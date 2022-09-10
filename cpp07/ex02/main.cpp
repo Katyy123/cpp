@@ -1,65 +1,115 @@
 #include <iostream>
 #include "Array.hpp"
-#include <iostream>
+#include <cstdlib>
 
-#define MAX_VAL 750
+int main(void)
+{
+    /* ---------- SIMPLE TYPE ---------- */
 
-// int main(int, char**)
-// {
-//     Array<int> numbers(MAX_VAL);
-//     int* mirror = new int[MAX_VAL];
+    std::cout << "---------- SIMPLE TYPE ----------" << std::endl;
+    Array<int> int_arr(3);
 
-//     srand(time(NULL));
-//     for (int i = 0; i < MAX_VAL; i++)
-//     {
-//         const int value = rand();
-//         numbers[i] = value;
-//         mirror[i] = value;
-//     }
+    int_arr[0] = 1;
+    int_arr[1] = 2;
+    int_arr[2] = 3;
+    std::cout << "int_arr: " << int_arr << std::endl;
 
-//     //SCOPE
-//     {
-//         Array<int> tmp = numbers;
-//         Array<int> test(tmp);
-//     }
+    std::cout << "Size: " << int_arr.size() << std::endl;
+    std::cout << std::endl;
 
-//     for (int i = 0; i < MAX_VAL; i++)
-//     {
-//         if (mirror[i] != numbers[i])
-//         {
-//             std::cerr << "didn't save the same value!!" << std::endl;
-//             return 1;
-//         }
-//     }
+    /* Copy constructor test with simple type*/
 
-//     try
-//     {
-//         numbers[-2] = 0;
-//     }
-//     catch(const std::exception& e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
+    std::cout << " ----- Copy constructor test ----- " << std::endl;
+    Array<int> int_copy1(int_arr);
+    std::cout << "int_copy1: " << int_copy1 << std::endl;
+    int_arr[2] = 4;
+    std::cout << "int_arr: " << int_arr << std::endl;
+    std::cout << "int_copy1: " << int_copy1 << std::endl;
+    std::cout << std::endl;
 
-//     try
-//     {
-//         numbers[MAX_VAL] = 0;
-//     }
-//     catch(const std::exception& e)
-//     {
-//         std::cerr << e.what() << '\n';
-//     }
+    /* Assignment operator test with simple type*/
 
-//     for (int i = 0; i < MAX_VAL; i++)
-//     {
-//         numbers[i] = rand();
-//     }
+    std::cout << " ----- Assignment operator test ----- " << std::endl;
+    Array<int> int_copy2;
+    int_copy2 = int_arr;
+    std::cout << "int_copy2: " << int_copy2 << std::endl;
+    int_arr[2] = 5;
+    std::cout << "int_arr: " << int_arr << std::endl;
+    std::cout << "int_copy2: " << int_copy2 << std::endl;
+    std::cout << std::endl;
 
-//     delete [] mirror;//
-//     return 0;
-// }
+    /* Out of bounds index test with simple type*/
 
-int main(void) {
+    std::cout << " ----- Out of bounds index test ----- " << std::endl;
+    try {
+        int_arr[-2] = 0;
+    }
+    catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+    try {
+        int_arr[3] = 0;
+    }
+    catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    /* ---------- COMPLEX TYPE ---------- */
+
+    std::cout << "---------- COMPLEX TYPE ----------" << std::endl;
+    Array<std::string> str_arr(3);
+    
+    str_arr[0] = "Hey";
+    str_arr[1] = "Mondo";
+    str_arr[2] = "!!";
+    std::cout << "str_arr : " << str_arr << std::endl;
+
+    std::cout << "Size: " << str_arr.size() << std::endl;
+    std::cout << std::endl;
+
+    /* Copy constructor test with complex type*/
+
+    std::cout << " ----- Copy constructor test ----- " << std::endl;
+    Array<std::string> str_copy1(str_arr);
+    std::cout << "str_copy1: " << str_copy1 << std::endl;
+    str_arr[2] = "??";
+    std::cout << "str_arr: " << str_arr << std::endl;
+    std::cout << "str_copy1: " << str_copy1 << std::endl;
+    std::cout << std::endl;
+
+    /* Assignment operator test with complex type*/
+
+    std::cout << " ----- Assignment operator test ----- " << std::endl;
+    Array<std::string> str_copy2;
+    str_copy2 = str_arr;
+    std::cout << "str_copy2: " << str_copy2 << std::endl;
+    str_arr[2] = "££";
+    std::cout << "str_arr: " << str_arr << std::endl;
+    std::cout << "str_copy2: " << str_copy2 << std::endl;
+    std::cout << std::endl;
+    
+    /* Out of bounds index test with complex type*/
+
+    std::cout << " ----- Out of bounds index test ----- " << std::endl;
+    try {
+        str_arr[-2] = "ciao";
+    }
+    catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+    try {
+        str_arr[3] = "ciao";
+    }
+    catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+
+//int main(void) {
 
     // int * a = new int();
 
@@ -69,7 +119,7 @@ int main(void) {
     // delete a;
 
     //Array< Array<int> > arr1(3);
-    Array<std::string> arr3(3);
+    //Array<std::string> arr3(3);
     //Array<int> arr1(3);
     // Array<char const *> arr1(3);
     // Array<char const *> arr2(2);
@@ -104,7 +154,7 @@ int main(void) {
 
     
 
-    std::cout << "arr3: " << arr3 << std::endl;
+    //std::cout << "arr3: " << arr3 << std::endl;
 
     //Array<char const *> arr2(arr1);
     //Array<int> arr2(arr1);
@@ -125,7 +175,7 @@ int main(void) {
     // arr1[1] = Array<int>(2);
     // arr1[2] = Array<int>(2);
 
-    std::cout << "size: " << arr3.size() << std::endl;
+    //std::cout << "size: " << arr3.size() << std::endl;
     //std::cout << "Array address: " << arr1.getArrayAddress() << std::endl;
 
     // std::cout << arr1 << std::endl;
@@ -134,6 +184,4 @@ int main(void) {
     //arr1[4] = 37;
     // arr1[5] = 4;
     // std::cout << arr1[5] << std::endl;
-
-    
-}
+//}
