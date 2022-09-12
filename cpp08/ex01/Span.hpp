@@ -15,11 +15,6 @@ class Span {
 
         Span & operator=(Span const & span);
 
-        class InvalidSizeException : public std::exception {
-            public:
-                virtual const char * what() const throw();
-        };
-
         class FullSpanException : public std::exception {
             public:
                 virtual const char * what() const throw();
@@ -30,9 +25,10 @@ class Span {
         };
 
         void addNumber(unsigned int n);
+        void addNumber(std::vector<int>::const_iterator it1, std::vector<int>::const_iterator it2);
 
         unsigned int shortestSpan();
-        unsigned int longestSpan();
+        unsigned int longestSpan() const;
 
     private:
         Span();

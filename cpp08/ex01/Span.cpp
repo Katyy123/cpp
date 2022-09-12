@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cstdlib>
 
 Span::Span() {
 
@@ -9,13 +10,10 @@ Span::Span() {
 
 Span::Span(unsigned int N) : _N(N) {
 
-    // if (!N)
-	// 	throw InvalidSizeException();
 }
 
 Span::Span(Span const & span) {
 
-    //this->_numbers.clear();
     *this = span;
 }
 
@@ -39,13 +37,41 @@ void Span::addNumber(unsigned int n) {
     this->_numbers.push_back(n);
 }
 
-unsigned int Span::shortestSpan() {
-
-    if (this->_numbers.size() < 2)
-        throw NoSpanCanBeFoundException();
+void	Span::addNumber(std::vector<int>::const_iterator it1, std::vector<int>::const_iterator it2)
+{
+	while (it1 < it2)
+	{
+		if (this->_numbers.size() == _N)
+			throw FullSpanException();
+		this->_numbers.push_back(*it1);
+		it1++;
+	}
 }
 
-unsigned int Span::longestSpan() {
+unsigned int Span::shortestSpan() {
+
+    unsigned int min_span = -1;
+    unsigned int tmp_span;
+    std::vector<int> copy(this->_numbers.size());
+
+    std::copy(_numbers.begin(), _numbers.end(), copy.begin());
+    
+    if (copy.size() < 2)
+        throw NoSpanCanBeFoundException();
+
+    std::sort(copy.begin(), copy.end());
+
+    std::vector<int>::const_iterator it;
+    std::vector<int>::const_iterator it_end = copy.end();
+
+    for (it = copy.begin(); it != it_end - 1; it++) {
+        if ((tmp_span = std::abs(*it - *(it + 1))) < min_span)
+            min_span = tmp_span;
+    }
+    return min_span;
+}
+
+unsigned int Span::longestSpan() const {
 
     unsigned int min;
     unsigned int max;
@@ -64,5 +90,5 @@ const char * Span::FullSpanException::what() const throw() {
 
 const char * Span::NoSpanCanBeFoundException::what() const throw() {
 
-    return "No Span ca be found";
+    return "No Span can be found";
 }
