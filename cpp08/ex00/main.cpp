@@ -63,13 +63,24 @@ int main(void) {
     {
         std::deque<int> myCont;
         std::deque<int>::const_iterator it;
-        std::deque<int>::const_iterator it2;
 
         myCont.push_back(20);
         myCont.push_back(21);
         myCont.push_back(89);
         myCont.push_back(7);
         myCont.push_back(98);
+
+        try {
+        it = easyfind(myCont, VALUE);
+        }
+        catch(std::exception & e) {
+            std::cerr << e.what() << std::endl;
+        }
+    }
+
+    {
+        std::vector<int> myCont;
+        std::vector<int>::const_iterator it;
 
         try {
         it = easyfind(myCont, VALUE);
