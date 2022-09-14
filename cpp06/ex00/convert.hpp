@@ -11,17 +11,10 @@
 #include <cmath>
 #include <cstring>
 
-#define FLOAT_MAX       3.40282e+38
-#define FLOAT_MIN       1.17549e-38
-#define FLOAT_LOWEST    -3.40282e+38
-#define DOUBLE_MAX      1.79769e+308
-#define DOUBLE_MIN      2.22507e-308
-#define DOUBLE_LOWEST   -1.79769e+308
-
 void wrong_arg();
 void ft_convert_char(std::string str);
 void ft_convert_int(char *char_str, std::string str);
-void ft_convert_float(std::string str, char* char_str);
+void ft_convert_float(char* char_str);
 void ft_convert_double(std::string str, char* char_str);
 void ft_convert(std::string str, char * char_str);
 int main(int argc, char **argv);

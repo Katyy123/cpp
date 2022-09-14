@@ -29,6 +29,7 @@ void ft_convert_int(std::string str) {
     ss << str;
     ss >> long_n;
     if (long_n > INT_MAX || long_n < INT_MIN) {
+        std::cout << "wrong arg 5" << std::endl;
         wrong_arg();
         exit(EXIT_FAILURE);
     }
@@ -48,27 +49,14 @@ void ft_convert_int(std::string str) {
     std::cout << std::fixed << std::setprecision(1) <<"double: " << double_n << std::endl;
 }
 
-void ft_convert_float(std::string str, char* char_str) {
+void ft_convert_float(char* char_str) {
 
     std::stringstream   ss;
-    std::stringstream   ss2;
     float               float_n;
     int                 precision = 1;
-    long double         long_double_n;
+    double              double_n;
 
-    if (str == "inff" || str == "-inff" || str == "0.0f" || str == "nanf")
-        float_n = std::atof(char_str);
-    else {
-        ss << str;
-        ss >> long_double_n;
-        if (long_double_n > FLOAT_MAX || long_double_n < FLOAT_MIN ||
-                    (long_double_n < FLOAT_LOWEST && long_double_n > -FLOAT_LOWEST)) {
-            wrong_arg();
-            exit(EXIT_FAILURE);
-        }
-        ss2 << str;
-        ss2 >> float_n;
-    }
+    float_n = std::atof(char_str);
     if (float_n >= 32 && float_n < 127) { 
         char c = static_cast<char>(float_n);
         std::cout << "char: " << "'" << c << "'" << std::endl;
@@ -77,7 +65,7 @@ void ft_convert_float(std::string str, char* char_str) {
         std::cout << "char: " << "Non displayable" << std::endl;
     else
         std::cout << "char: " << "impossible" << std::endl;
-    if (float_n <= INT_MAX && float_n >= INT_MIN) {
+    if (float_n <= static_cast<float>(INT_MAX) && float_n >= static_cast<float>INT_MIN) {
         int int_n = static_cast<int>(float_n);
         std::cout << "int: " << int_n << std::endl;
     }
@@ -86,30 +74,21 @@ void ft_convert_float(std::string str, char* char_str) {
     if (std::floor(float_n) != float_n)
         precision = 3;
     std::cout << std::fixed << std::setprecision(precision) << "float: " << float_n << "f" << std::endl;
-    double double_n = static_cast<double>(float_n);
+    double_n = static_cast<double>(float_n);
     std::cout << std::fixed << std::setprecision(precision) << "double: " << double_n << std::endl;
 }
 
 void ft_convert_double(std::string str, char* char_str) {
 
     std::stringstream   ss;
-    std::stringstream   ss2;
     int                 precision = 1;
-    long double         long_double_n;
     double              double_n;
 
     if (str == "inf" || str == "-inf" || str == "0.0" || str == "nan")
         double_n = std::atof(char_str);
     else {
         ss << str;
-        ss >> long_double_n;
-        if (long_double_n > DOUBLE_MAX || long_double_n < DOUBLE_MIN ||
-                    (long_double_n < DOUBLE_LOWEST && long_double_n > -DOUBLE_LOWEST)) {
-            wrong_arg();
-            exit(EXIT_FAILURE);
-        }
-        ss2 << str;
-        ss2 >> double_n;
+        ss >> double_n;
     }
     if (double_n >= 32 && double_n < 127) { 
         char c = static_cast<char>(double_n);
@@ -119,7 +98,7 @@ void ft_convert_double(std::string str, char* char_str) {
         std::cout << "char: " << "Non displayable" << std::endl;
     else
         std::cout << "char: " << "impossible" << std::endl;
-    if (double_n <= INT_MAX && double_n >= INT_MIN) {
+    if (double_n <= static_cast<double>(INT_MAX) && double_n >= static_cast<double>(INT_MIN)) {
         int int_n = static_cast<int>(double_n);
         std::cout << "int: " << int_n << std::endl;
     }
@@ -140,6 +119,7 @@ void ft_convert(std::string str, char * char_str) {
 
     for (long unsigned int i = 0; i < str.length(); i++) {
         if (std::isprint(str[i]) == 0) {
+            std::cout << "wrong arg 2" << std::endl;
             wrong_arg();
             exit(EXIT_FAILURE);
         }
@@ -156,12 +136,14 @@ void ft_convert(std::string str, char * char_str) {
         ft_convert_int(str);
     else if ((is_there_point == 1 && str[str.length() - 1] == 'f' && std::atof(char_str) != 0.0) ||
                 str == "inff" || str == "-inff" || str == "0.0f" || str == "nanf")
-        ft_convert_float(str, char_str);
+        ft_convert_float(char_str);
     else if ((is_there_point == 1 && std::atof(char_str) != 0.0) ||
                 str == "inf" || str == "-inf" || str == "0.0" || str == "nan")
         ft_convert_double(str, char_str);
-    else
+    else {
+        std::cout << "wrong arg 1" << std::endl;
         wrong_arg();
+    }
 }
 
 int main(int argc, char **argv) {
