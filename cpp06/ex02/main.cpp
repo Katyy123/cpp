@@ -7,8 +7,7 @@
 
 Base * generate(void) {
 
-    //It randomly instanciates A, B or C and returns the instance as a Base pointer. Feel free
-//to use anything you like for the random choice implementation.
+    //It randomly instanciates A, B or C and returns the instance as a Base pointer
 
     int index;
     std::string arr[3] = {"A", "B", "C"};
@@ -52,12 +51,12 @@ void identify(Base& p) {
     //It prints the actual type of the object pointed to by p: "A", "B" or "C". Using a pointer
 //inside this function is forbidden.
     try {
-        dynamic_cast<A &>(p);
+        (void)dynamic_cast<A &>(p); 
         std::cout << "A" << std::endl;
     }
     catch (std::exception & e) {
         try {
-            dynamic_cast<B &>(p);
+            (void)dynamic_cast<B &>(p);
             std::cout << "B" << std::endl;
         }
         catch (std::exception & e2) {

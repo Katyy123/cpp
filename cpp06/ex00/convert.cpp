@@ -29,7 +29,6 @@ void ft_convert_int(std::string str) {
     ss << str;
     ss >> long_n;
     if (long_n > INT_MAX || long_n < INT_MIN) {
-        std::cout << "wrong arg 5" << std::endl;
         wrong_arg();
         exit(EXIT_FAILURE);
     }
@@ -119,7 +118,6 @@ void ft_convert(std::string str, char * char_str) {
 
     for (long unsigned int i = 0; i < str.length(); i++) {
         if (std::isprint(str[i]) == 0) {
-            std::cout << "wrong arg 2" << std::endl;
             wrong_arg();
             exit(EXIT_FAILURE);
         }
@@ -140,10 +138,8 @@ void ft_convert(std::string str, char * char_str) {
     else if ((is_there_point == 1 && std::atof(char_str) != 0.0) ||
                 str == "inf" || str == "-inf" || str == "0.0" || str == "nan")
         ft_convert_double(str, char_str);
-    else {
-        std::cout << "wrong arg 1" << std::endl;
+    else
         wrong_arg();
-    }
 }
 
 int main(int argc, char **argv) {

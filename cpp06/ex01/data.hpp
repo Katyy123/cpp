@@ -3,7 +3,7 @@
 
 struct Data {
 
-    static int const data = 42;
+    int n;
 };
 
 #endif
