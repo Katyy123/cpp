@@ -6,7 +6,13 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:34 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/15 14:51:35 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:07:05 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "BitcoinExchange.hpp"
+
+read_first_database() {
+
+	
+}

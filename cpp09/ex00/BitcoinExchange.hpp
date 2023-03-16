@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:37 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/15 18:00:13 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:03:45 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,8 @@
 
 # include <map>
 # include <iostream>
+# include <fstream>
+# include "date.hpp"
+
 
 #endif
