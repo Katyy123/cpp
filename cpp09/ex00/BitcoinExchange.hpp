@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:37 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/16 17:03:45 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:24:39 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <map>
+# include <unordered_map>
 # include <iostream>
 # include <fstream>
-# include "date.hpp"
+# include "Date.hpp"
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:01:04 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/16 18:09:02 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:21:55 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,25 @@
 class Date {
 	
 	public:
-		Date(unsigned int year, unsigned int month, unsigned int day);
-		Date(Date const & date);
+		Date(long int year, long int month, long int day);
+		Date(Date const & other);
 		~Date();
 
-		Date & operator=(Date const & date);
+		Date & operator=(Date const & other);
 
-		unsigned int getYear() const;
-		unsigned int getMonth() const;
-		unsigned int getDay() const;
+		long int getYear() const;
+		long int getMonth() const;
+		long int getDay() const;
 
-		void setYear(unsigned int year);
-		void setMonth(unsigned int year);
-		void setDay(unsigned int year);
+		void setYear(long int year);
+		void setMonth(long int year);
+		void setDay(long int year);
+
+		bool operator==(Date const & other) const;
+		bool operator<(Date const & other) const;
+		bool operator>(Date const & other) const;
+		bool operator<=(Date const & other) const;
+		bool operator>=(Date const & other) const;
 
 		class WrongYearException: public std::exception {
 			public:
@@ -49,9 +55,9 @@ class Date {
 		
 	private:
 		Date();
-		unsigned int _year;
-		unsigned int _month;
-		unsigned int _day;
+		long int _year;
+		long int _month;
+		long int _day;
 
 };
 

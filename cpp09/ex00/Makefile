@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 17:21:45 by cfiliber          #+#    #+#              #
-#    Updated: 2023/03/16 16:03:52 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/03/17 16:45:44 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = btc
 SRCS = \
 		main.cpp\
 		BitcoinExchange.cpp\
+		Date.cpp\
 
 OBJS = $(SRCS:.cpp=.o)
 
