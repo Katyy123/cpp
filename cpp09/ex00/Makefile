@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: catia <catia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 17:21:45 by cfiliber          #+#    #+#              #
-#    Updated: 2023/03/17 16:45:44 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/03/20 19:52:31 by catia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS = \
 		main.cpp\
 		BitcoinExchange.cpp\
 		Date.cpp\
+		utils.cpp\
 
 OBJS = $(SRCS:.cpp=.o)
 

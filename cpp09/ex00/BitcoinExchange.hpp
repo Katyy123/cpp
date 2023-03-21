@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: catia <catia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:37 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/18 18:35:28 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/20 20:31:40 by catia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@
 # include <string>
 # include "Date.hpp"
 
+/* BitcoinExchange.cpp */
 int read_csv_database(std::ifstream & db_1, std::map<Date, float> & database_map);
 int read_infile(std::ifstream & db, std::multimap<Date, float> infile_map);
-//std::map<Date, float> read_database();
+
+/* utils.cpp */
+bool ft_is_toobig(std::string const & str);
+int	ft_atoi(std::string str);
 
 #endif

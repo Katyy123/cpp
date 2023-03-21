@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   date.hpp                                           :+:      :+:    :+:   */
+/*   Date.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: catia <catia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:01:04 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/17 17:21:55 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/20 20:35:52 by catia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class Date {
 	
 	public:
+		Date();
 		Date(long int year, long int month, long int day);
 		Date(Date const & other);
 		~Date();
@@ -54,7 +55,6 @@ class Date {
 		};
 		
 	private:
-		Date();
 		long int _year;
 		long int _month;
 		long int _day;
