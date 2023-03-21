@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Date.cpp                                           :+:      :+:    :+:   */
+/*   date.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catia <catia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:35:05 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/20 20:37:14 by catia            ###   ########.fr       */
+/*   Updated: 2023/03/21 19:01:56 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,14 @@ const char * Date::WrongDayException::what() const throw() {
 
 std::ostream & operator<<(std::ostream & o, Date const & date) {
 
-	o << date.getYear() << "-" << date.getMonth() << "-" << date.getDay();
+	o << date.getYear() << "-";
+	if (date.getMonth() < 10)
+		o << "0" << date.getMonth() << "-";
+	else
+		o << date.getMonth() << "-";
+	if (date.getDay() < 10)
+		o << "0" << date.getDay();
+	else
+		o << date.getDay();
 	return o;
 }
