@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:40 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/21 19:11:13 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:24:30 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int main(int argc, char **argv) {
 		std::cout << "problem" << std::endl;
 		return 4;
 	}
-	// if (read_infile(infile, infile_map) == -1)
-	// 	return 5;
+	if (read_infile(infile, infile_map, database_map) == -1)
+		return 5;
 	
 	infile.close();
 	csv_database.close();
