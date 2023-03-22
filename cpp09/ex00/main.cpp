@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:40 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/22 17:20:01 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:23:16 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,9 @@ int main(int argc, char **argv) {
 	}
 	if (argc > 2)
 		std::cout << "Warning: only the first file will be considered" << std::endl << std::endl;
-	
-	if (read_database(csv_database, database_map) == -1) {
-		std::cout << "problem" << std::endl;
+		
+	if (read_database(csv_database, database_map) == -1)
 		return 4;
-	}
 	if (read_infile(infile, database_map) == -1)
 		return 5;
 	
