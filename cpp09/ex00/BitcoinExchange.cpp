@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:34 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/22 16:25:49 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:48:34 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,15 +199,20 @@ int read_infile(std::ifstream & infile, std::map<Date, float> & database_map) {
 		}
 		Date	date(year, month, day);
 		//infile_map.insert(std::pair<Date, float>(date, value));
+		//std::cout << "value: " << value << std::endl;
 		if (date < first_date)
-			std::cout << "---check 1--- " << first_date << " => " << value << " = " << value * database_map[first_date] << std::endl;
+			//std::cout << "---check 1--- " << first_date << " => " << value << " = " << value * database_map[first_date] << std::endl;
+			std::cout << first_date << " => " << value << " = " << value * database_map[first_date] << std::endl;
 		else if (date > last_date)
-			std::cout << "---check 2--- " << last_date << " => " << value << " = " << value * database_map[last_date] << std::endl;
+			//std::cout << "---check 2--- " << last_date << " => " << value << " = " << value * database_map[last_date] << std::endl;
+			std::cout << last_date << " => " << value << " = " << value * database_map[last_date] << std::endl;
 		else {
-			std::cout << "---check 3--- " << date << " => " << value << " = ";
+			//std::cout << "---check 3--- " << date << " => " << value << " = ";
+			std::cout << date << " => " << value << " = ";
 			while (database_map.find(date) == database_map.end())
 				--date;
-			std::cout << "---check 4--- " << value * database_map[date] << std::endl;
+			//std::cout << "---check 4--- " << value * database_map[date] << std::endl;
+			std::cout << value * database_map[date] << std::endl;
 		}
 	}
 	// std::cout << std::endl << "KEY\tELEMENT\n";
