@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:40 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/22 15:18:47 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:20:01 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int main(int argc, char **argv) {
 
 	std::map<Date, float> database_map;
-	//std::multimap<Date, float> infile_map;
 	std::ifstream csv_database;
 	std::ifstream infile;
 	
@@ -36,7 +35,7 @@ int main(int argc, char **argv) {
 	if (argc > 2)
 		std::cout << "Warning: only the first file will be considered" << std::endl << std::endl;
 	
-	if (read_csv_database(csv_database, database_map) == -1) {
+	if (read_database(csv_database, database_map) == -1) {
 		std::cout << "problem" << std::endl;
 		return 4;
 	}

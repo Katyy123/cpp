@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:37 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/22 15:17:14 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:07:15 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # include "Date.hpp"
 
 /* BitcoinExchange.cpp */
-int		read_csv_database(std::ifstream & db_1, std::map<Date, float> & database_map);
+int		read_database(std::ifstream & db_1, std::map<Date, float> & database_map);
 int		read_infile(std::ifstream & db, std::map<Date, float> & database_map);
+void	ft_print(Date & date, float value, std::map<Date, float> & database_map);
 
 /* utils.cpp */
 bool	ft_is_toobig(std::string const & str);
