@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:34 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/21 20:27:39 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:25:49 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int read_csv_database(std::ifstream & db, std::map<Date, float> & database_map) 
 	return 0;
 }
 
-int read_infile(std::ifstream & infile, std::multimap<Date, float> infile_map, std::map<Date, float> & database_map) {
+int read_infile(std::ifstream & infile, std::map<Date, float> & database_map) {
 
 	std::string line;
 	std::string sub_str;
@@ -101,13 +101,15 @@ int read_infile(std::ifstream & infile, std::multimap<Date, float> infile_map, s
 	std::size_t	i;
 	int			count;
 	int			count_2;
+	Date		first_date(database_map.begin()->first);
+	Date		last_date(database_map.rbegin()->first);
 	
 	if (!infile.is_open()) {
-		std::cerr << "Error: the database does not exist or is not opened" << std::endl;
+		std::cerr << "Error: the file does not exist or is not opened" << std::endl;
 		return -1;
 	}
 	if (infile.peek() == EOF) {
-		std::cerr << "Error: the database is empty" << std::endl;
+		std::cerr << "Error: the file is empty" << std::endl;
 		return -1;
 	}
 	while (getline(infile, line)) {
@@ -121,7 +123,7 @@ int read_infile(std::ifstream & infile, std::multimap<Date, float> infile_map, s
 		}
 		pipe_pos = line.find(" | ");
 		if (pipe_pos == line.npos) {
-			std::cerr << "Error: bad input 1 => " << line << std::endl;
+			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
 		sub_str = line.substr(0, pipe_pos);
@@ -132,7 +134,7 @@ int read_infile(std::ifstream & infile, std::multimap<Date, float> infile_map, s
 		i = 0;
 		while (dash_pos != sub_str.npos && i < 2) {
 			if (sub_sub_str.find_first_not_of("0123456789") != sub_sub_str.npos) {
-				std::cerr << "Error: bad input 2 => " << line << std::endl;
+				std::cerr << "Error: bad input => " << line << std::endl;
 				break;
 			}
 			if (ft_is_toobig(sub_sub_str) == true) {
@@ -149,12 +151,11 @@ int read_infile(std::ifstream & infile, std::multimap<Date, float> infile_map, s
 			i++;
 		}
 		if (i != 2) {
-			std::cerr << "Error: bad input 3 => " << line << std::endl;
 			continue;
 		}
 		sub_sub_str = sub_str.substr(temp_dash_pos + 1, sub_str.npos);
 		if (sub_sub_str.find_first_not_of("0123456789") != sub_sub_str.npos) {
-				std::cerr << "Error: bad input 4 => " << line << std::endl;
+				std::cerr << "Error: bad input => " << line << std::endl;
 				continue;
 			}
 			if (ft_is_toobig(sub_sub_str) == true) {
@@ -163,7 +164,7 @@ int read_infile(std::ifstream & infile, std::multimap<Date, float> infile_map, s
 			}
 		day = ft_stoi(sub_sub_str);
 		if (year > 3000 || !(month >= 1 && month <= 12) || ! (day >= 1 && day <= 31)) {
-			std::cerr << "Error: bad input 5 => " << line << std::endl;
+			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
 		
@@ -180,11 +181,15 @@ int read_infile(std::ifstream & infile, std::multimap<Date, float> infile_map, s
 		}
 		if (count > 1 || count_2 > 1 || sub_str.find_first_not_of("0123456789.-") != sub_str.npos ||
 				(sub_str.find_first_of("-") != 0 && sub_str.find_first_of("-") != sub_str.npos)) {
-			std::cerr << "Error: bad input 6 => " << line << std::endl;
+			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
 		if (sub_str[0] == '-') {
 			std::cerr << "Error: not a positive number." << std::endl;
+			continue;
+		}
+		if (ft_is_toobig(sub_str) == true) {
+			std::cerr << "Error: too large number." << std::endl;
 			continue;
 		}
 		value = ft_stof(sub_str);
@@ -193,13 +198,21 @@ int read_infile(std::ifstream & infile, std::multimap<Date, float> infile_map, s
 			continue;
 		}
 		Date	date(year, month, day);
-		infile_map.insert(std::pair<Date, float>(date, value));
-		std::cout << date << " => " << value << " = " << value * database_map[date] << std::endl;
+		//infile_map.insert(std::pair<Date, float>(date, value));
+		if (date < first_date)
+			std::cout << "---check 1--- " << first_date << " => " << value << " = " << value * database_map[first_date] << std::endl;
+		else if (date > last_date)
+			std::cout << "---check 2--- " << last_date << " => " << value << " = " << value * database_map[last_date] << std::endl;
+		else {
+			std::cout << "---check 3--- " << date << " => " << value << " = ";
+			while (database_map.find(date) == database_map.end())
+				--date;
+			std::cout << "---check 4--- " << value * database_map[date] << std::endl;
+		}
 	}
-	std::cout << std::endl << "KEY\tELEMENT\n";
-    for (std::map<Date, float>::const_iterator itr = infile_map.begin(); itr != infile_map.end(); ++itr)
-        std::cout << itr->first << '\t' << itr->second << '\n';
-	return 0;
+	// std::cout << std::endl << "KEY\tELEMENT\n";
+    // for (std::map<Date, float>::const_iterator itr = infile_map.begin(); itr != infile_map.end(); ++itr)
+    //     std::cout << itr->first << '\t' << itr->second << '\n';
 	
 	return 0;
 }

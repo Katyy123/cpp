@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:35:05 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/21 19:01:56 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:16:21 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,41 @@ long int Date::getDay() const {
 
 void Date::setYear(long int year) {
 
-	this->_year = year;
+	try {
+		if (year >= 0 && year <= 3000)
+			this->_year = year;
+		else
+			throw WrongYearException();
+	}
+	catch(WrongYearException & e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
 void Date::setMonth(long int month) {
 
-	this->_month = month;
+	try {
+	if (month >=1 && month <=12)
+		this->_month = month;
+	else
+		throw WrongMonthException();
+	}
+	catch(WrongMonthException & e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
 void Date::setDay(long int day) {
 
+	try {
+		if (day >= 1 && day <= 31)
+			this->_day = day;
+		else
+			throw WrongDayException();
+	}
+	catch(WrongDayException & e) {
+		std::cout << e.what() << std::endl;
+	}
 	this->_day = day;
 }
 
@@ -116,6 +141,38 @@ bool Date::operator<=(Date const & other) const {
 bool Date::operator>=(Date const & other) const {
 	
 	return (*this > other || *this == other);
+}
+
+Date & Date::operator++()
+{
+	if (this->_day != 31)
+		this->_day++;
+	else if (this->_month != 12) {
+		this->_month++;
+		this->_day = 1;
+	}
+	else {
+		this->_year++;
+		this->_month = 1;
+		this->_day = 1;
+	}
+	return (*this);
+}
+
+Date & Date::operator--()
+{
+	if (this->_day != 1)
+		this->_day--;
+	else if (this->_month != 1) {
+		this->_month--;
+		this->_day = 31;
+	}
+	else {
+		this->_year--;
+		this->_month = 12;
+		this->_day = 31;
+	}
+	return (*this);
 }
 
 const char * Date::WrongYearException::what() const throw() {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Date.hpp                                           :+:      :+:    :+:   */
+/*   date.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: catia <catia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:01:04 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/20 20:35:52 by catia            ###   ########.fr       */
+/*   Updated: 2023/03/22 14:10:17 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ class Date {
 		bool operator>(Date const & other) const;
 		bool operator<=(Date const & other) const;
 		bool operator>=(Date const & other) const;
+
+		Date & operator++();
+		Date & operator--();
 
 		class WrongYearException: public std::exception {
 			public:
