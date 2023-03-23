@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 14:12:00 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/23 14:14:05 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:57:04 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ int	ft_stoi(std::string const & str) {
 		num = num * 10 + (str[i] - 48);
 		i++;
 	}
+	return (num);
+}
+
+int	ft_ctoi(char const c) {
+	
+	int	num;
+
+	num = 0;
+	if (c >= 48 && c <= 57)
+		num = c - 48;
 	return (num);
 }
 
