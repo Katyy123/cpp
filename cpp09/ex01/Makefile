@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 17:31:56 by cfiliber          #+#    #+#              #
-#    Updated: 2023/03/14 17:32:14 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/03/23 14:12:23 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = RPN
 SRCS = \
 		main.cpp\
 		RPN.cpp\
+		utils.cpp\
 
 OBJS = $(SRCS:.cpp=.o)
 
