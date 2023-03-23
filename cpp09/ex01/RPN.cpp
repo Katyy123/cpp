@@ -6,13 +6,13 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 17:30:28 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/23 17:18:13 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:19:37 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-int solve_expression(std::string const & str) {//, int * result) {
+int solve_expression(std::string const & str) {
 
 	std::size_t		i;
 	int				num;

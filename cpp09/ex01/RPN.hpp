@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 17:30:25 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/23 16:57:36 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:19:27 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <iostream>
 # include <string>
 # include <stack>
-
-//#define static_cast<std::string>("0123456789") ALL_DIGITS_STRING
 
 /* RPN.cpp */
 int solve_expression(std::string const & str);
