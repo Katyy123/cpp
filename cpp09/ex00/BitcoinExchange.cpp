@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:34 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/22 17:19:39 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:43:22 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ int read_infile(std::ifstream & infile, std::map<Date, float> & database_map) {
 			continue;
 		if (line == "date | value")
 			continue;
-		if (line.find_first_not_of("0123456789-|. ") != line.npos) {
+		if (line.find_first_not_of("0123456789-|., ") != line.npos) {
 			std::cerr << "Error: wrong character" << std::endl;
 			continue;
 		}
@@ -204,14 +204,14 @@ int read_infile(std::ifstream & infile, std::map<Date, float> & database_map) {
 		count = 0;
 		count_2 = 0;
 		for (i = 0; i < sub_str.length(); i++) {
-			if (sub_str[i] == '.')
+			if (sub_str[i] == '.' || sub_str[i] == ',')
 				count++;
 		}
 		for (i = 0; i < sub_str.length(); i++) {
 			if (sub_str[i] == '-')
 				count_2++;
 		}
-		if (count > 1 || count_2 > 1 || sub_str.find_first_not_of("0123456789.-") != sub_str.npos ||
+		if (count > 1 || count_2 > 1 || sub_str.find_first_not_of("0123456789.,-") != sub_str.npos ||
 				(sub_str.find_first_of("-") != 0 && sub_str.find_first_of("-") != sub_str.npos)) {
 			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;

@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:53:45 by catia             #+#    #+#             */
-/*   Updated: 2023/03/22 17:25:31 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:52:34 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ float	ft_stof(std::string const &str) {
 	dec_part = 0;
 	i = 0;
 	dot_pos = str.find(".");
+	if (dot_pos == str.npos && str.find(",") != str.npos)
+		dot_pos = str.find(",");;
 	int_str = str.substr(0, dot_pos);
 	while (int_str[i] >= 48 && int_str[i] <= 57)
 	{
