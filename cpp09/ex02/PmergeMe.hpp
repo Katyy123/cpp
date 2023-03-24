@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:54 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/23 18:15:27 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/24 19:15:41 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,8 @@
 
 # include <iostream>
 # include <string>
+# include <ctime>
+# include <vector>
+# include <list>
 
 #endif
