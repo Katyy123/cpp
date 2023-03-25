@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 17:32:54 by cfiliber          #+#    #+#              #
-#    Updated: 2023/03/14 17:33:06 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/03/25 14:26:50 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = PmergeMe
 SRCS = \
 		main.cpp\
 		PmergeMe.cpp\
+		utils.cpp\
 
 OBJS = $(SRCS:.cpp=.o)
 

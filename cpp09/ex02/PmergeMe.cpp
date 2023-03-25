@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:52 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/25 13:36:07 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/25 16:07:38 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,56 @@ void	print_output(std::vector<int> const & input_array, std::vector<int> const &
 	std::cout << std::endl;
 	std::cout << "Time to process a range of " << elem_number << " elements with std::vector: " << vector_time << " s" << std::endl; 
 	std::cout << "Time to process a range of " << elem_number << " elements with std::list:   " << list_time << " s" << std::endl;
+}
+
+std::vector<int> * vector_merge_insert_sort(int elem_number, char **num_matrix, std::vector<int> * my_vector) {
+
+	int					num;
+	std::string			num_str;
+	std::string			all_digits_string("0123456789");
+
+	for (int i = 0; i < elem_number; ++i) {
+		num_str = static_cast<std::string>(num_matrix[i]);
+		for (size_t j = 0; j < num_str.length(); ++j) {
+			if (all_digits_string.find(num_str[j]) == all_digits_string.npos)
+				throw std::exception();
+		}
+		if (ft_is_toobig(num_str) == true)
+			throw std::exception();
+		else {
+			num = ft_stoi(num_str);
+			my_vector->push_back(num);
+		}
+	}
+	for (std::vector<int>::const_iterator it = my_vector->begin(); it != my_vector->end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
+	return my_vector;
+}
+
+std::list<int> * list_merge_insert_sort(int elem_number, char **num_matrix, std::list<int> * my_list) {
+
+	int					num;
+	std::string			num_str;
+	std::string			all_digits_string("0123456789");
+
+	for (int i = 0; i < elem_number; ++i) {
+		num_str = static_cast<std::string>(num_matrix[i]);
+		for (size_t j = 0; j < num_str.length(); ++j) {
+			if (all_digits_string.find(num_str[j]) == all_digits_string.npos)
+				throw std::exception();
+		}
+		if (ft_is_toobig(num_str) == true)
+			throw std::exception();
+		else {
+			num = ft_stoi(num_str);
+			my_list->push_back(num);
+		}
+	}
+	for (std::list<int>::const_iterator it = my_list->begin(); it != my_list->end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
+	return my_list;
 }
