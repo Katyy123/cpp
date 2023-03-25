@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:46 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/24 19:26:02 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/25 13:35:54 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ int main(int argc, char **argv) {
 	vector_time = double(vector_end - vector_start) / double(CLOCKS_PER_SEC);
 	list_time = double(list_end - list_start) / double(CLOCKS_PER_SEC);
 
-	print_output(input_array, sorted_vector, argc - 1, vector_time);
-	print_output(input_array, sorted_list, argc - 1, list_time);
+	print_output(input_array, sorted_vector, sorted_list, input_array.size(), vector_time, list_time);
+
+	//print_output(vector_time);
+	//print_output(list_time);
 	
 	return 0;
 }
