@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:54 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/25 16:24:26 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/25 16:56:33 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PMERGEME_HPP
 
 # include <iostream>
+# include <fstream>
 # include <iomanip>
 # include <string>
 # include <ctime>
@@ -21,6 +22,7 @@
 # include <list>
 # include <sstream>
 //# include "print_output.tpp"
+# include <cmath>
 
 /* PmergeMe.cpp */
 void	print_output(std::vector<int> const & input_array, std::vector<int> const & sorted_vector,

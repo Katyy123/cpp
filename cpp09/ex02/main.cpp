@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:46 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/25 16:20:23 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/25 17:43:41 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,6 @@ int main(int argc, char **argv) {
 
 	//make input array using argv
 	for (int i = 1; i < argc; ++i) {
-		//num_str = static_cast<std::string>(num_matrix[i]);
-		// for (size_t j = 0; j < num_str.length(); ++j) {
-		// 	if (all_digits_string.find(num_str[j]) == all_digits_string.npos)
-		// 		throw std::exception();
-		// }
-		// if (ft_is_toobig(num_str) == true)
-		// 	throw std::exception();
-		// else {
 		int num = std::stoi(argv[i]);
 		input_array.push_back(num);
 	}
@@ -64,10 +56,21 @@ int main(int argc, char **argv) {
 
 	print_output(input_array, *my_vector, *my_list, input_array.size(), vector_time, list_time);
 
-	// for (std::vector<int>::const_iterator it = my_vector->begin(); it != my_vector->end(); ++it)
-	// 	std::cout << *it << " ";
-	// std::cout << std::endl;
+
+	// std::ofstream outfile;
+	// outfile.open("outfile.txt");
+	// for (int n = 1; n < 100; n += 5) {
+	// 	for (int k = 1; k < 100 && k <= n; k += 5) {
+	// 		float complex;
+	// 		//complex = (n * k) + (n * log10(n / k));
+	// 		complex = n + n * log10(n/k);
+	// 		outfile << "N = " << n << ", K = " << k << " => complexity = " << complex << std::endl;
+	// 	}
+	// }
+	// outfile.close();
+	
 	
 	delete my_vector;
+	delete my_list;
 	return 0;
 }
