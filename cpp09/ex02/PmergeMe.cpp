@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:52 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/25 16:07:38 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/25 16:26:02 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ void	print_output(std::vector<int> const & input_array, std::vector<int> const &
 	for (std::list<int>::const_iterator it = sorted_list.begin(); it != sorted_list.end(); ++it)
 		std::cout << *it << " ";
 	std::cout << std::endl;
-	std::cout << "Time to process a range of " << elem_number << " elements with std::vector: " << vector_time << " s" << std::endl; 
-	std::cout << "Time to process a range of " << elem_number << " elements with std::list:   " << list_time << " s" << std::endl;
+	std::cout << "Time to process a range of " << elem_number << " elements with std::vector: "
+			<< std::fixed << vector_time << std::setprecision(6) << " s" << std::endl; 
+	std::cout << "Time to process a range of " << elem_number << " elements with std::list:   "
+			<< std::fixed << list_time << std::setprecision(6) << " s" << std::endl;
 }
 
-std::vector<int> * vector_merge_insert_sort(int elem_number, char **num_matrix, std::vector<int> * my_vector) {
+std::vector<int> * merge_insert_sort(int elem_number, char **num_matrix, std::vector<int> * my_vector) {
 
 	int					num;
 	std::string			num_str;
@@ -57,7 +59,7 @@ std::vector<int> * vector_merge_insert_sort(int elem_number, char **num_matrix, 
 	return my_vector;
 }
 
-std::list<int> * list_merge_insert_sort(int elem_number, char **num_matrix, std::list<int> * my_list) {
+std::list<int> * merge_insert_sort(int elem_number, char **num_matrix, std::list<int> * my_list) {
 
 	int					num;
 	std::string			num_str;

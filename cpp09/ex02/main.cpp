@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:46 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/25 16:04:51 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/25 16:20:23 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 	
 	vector_start = clock();
 	try {
-		my_vector = vector_merge_insert_sort(argc - 1, argv + 1, my_vector);
+		my_vector = merge_insert_sort(argc - 1, argv + 1, my_vector);
 	}
 	catch(std::exception & e) {
 		std::cerr << "Error: bad input" << std::endl;
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
 
 	list_start = clock();
 	try {
-		my_list = list_merge_insert_sort(argc - 1, argv + 1, my_list);
+		my_list = merge_insert_sort(argc - 1, argv + 1, my_list);
 	}
 	catch(std::exception & e) {
 		std::cerr << "Error: bad input" << std::endl;
@@ -46,11 +46,23 @@ int main(int argc, char **argv) {
 	list_end = clock();
 
 	//make input array using argv
+	for (int i = 1; i < argc; ++i) {
+		//num_str = static_cast<std::string>(num_matrix[i]);
+		// for (size_t j = 0; j < num_str.length(); ++j) {
+		// 	if (all_digits_string.find(num_str[j]) == all_digits_string.npos)
+		// 		throw std::exception();
+		// }
+		// if (ft_is_toobig(num_str) == true)
+		// 	throw std::exception();
+		// else {
+		int num = std::stoi(argv[i]);
+		input_array.push_back(num);
+	}
 	
 	vector_time = double(vector_end - vector_start) / double(CLOCKS_PER_SEC);
 	list_time = double(list_end - list_start) / double(CLOCKS_PER_SEC);
 
-	//print_output(input_array, my_vector, my_list, input_array.size(), vector_time, list_time);
+	print_output(input_array, *my_vector, *my_list, input_array.size(), vector_time, list_time);
 
 	// for (std::vector<int>::const_iterator it = my_vector->begin(); it != my_vector->end(); ++it)
 	// 	std::cout << *it << " ";
