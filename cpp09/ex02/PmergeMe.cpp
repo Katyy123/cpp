@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:52 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/26 17:49:36 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/26 18:13:34 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,102 +52,52 @@ void insertion_sort(std::vector<int> * my_vector, int begin, int end) {
 
 void merge(std::vector<int> * my_vector, int const left, int const mid, int const right) {
 	
-	int left_vec_elems = mid - left + 1;
-    int right_vec_elems = right - mid;
-  
-    // Create temp arrays
     std::vector<int> *left_vec = new std::vector<int>;
 	std::vector<int> *right_vec = new std::vector<int>;
+	int left_vec_elems = mid - left + 1;
+    int right_vec_elems = right - mid;
+	int left_vec_index = 0;
+    int right_vec_index = 0;
+    int merged_vec_index = left;
   
-    // Copy data to temp arrays leftArray[] and rightArray[]
+    // Copy data to temp vectors left_vec and right_vec
     for (int i = 0; i < left_vec_elems; i++)
 		left_vec->push_back((*my_vector)[left + i]);
     for (int j = 0; j < right_vec_elems; j++)
         right_vec->push_back((*my_vector)[mid + 1 + j]);
-  
-    int left_vec_index = 0; // Initial index of first sub-array
-    int right_vec_index = 0; // Initial index of second sub-array
-    int merged_arr_index = left; // Initial index of merged array
-  
-    // Merge the temp arrays back into array[left..right]
+
+	// Merge the temp vectors back into my_vector
     while (left_vec_index < left_vec_elems && right_vec_index < right_vec_elems) {
         if ((*left_vec)[left_vec_index] <= (*right_vec)[right_vec_index]) {
-            (*my_vector)[merged_arr_index] = (*left_vec)[left_vec_index];
+            (*my_vector)[merged_vec_index] = (*left_vec)[left_vec_index];
             left_vec_index++;
         }
         else {
-            (*my_vector)[merged_arr_index] = (*right_vec)[right_vec_index];
+            (*my_vector)[merged_vec_index] = (*right_vec)[right_vec_index];
             right_vec_index++;
         }
-        merged_arr_index++;
+        merged_vec_index++;
     }
-    // Copy the remaining elements of
-    // left[], if there are any
+    // Copy the remaining elements of left_vec, if there are any
     while (left_vec_index < left_vec_elems) {
-        (*my_vector)[merged_arr_index] = (*left_vec)[left_vec_index];
+        (*my_vector)[merged_vec_index] = (*left_vec)[left_vec_index];
         left_vec_index++;
-        merged_arr_index++;
+        merged_vec_index++;
     }
-    // Copy the remaining elements of
-    // right[], if there are any
+    // Copy the remaining elements of right_vec, if there are any
     while (right_vec_index < right_vec_elems) {
-        (*my_vector)[merged_arr_index] = (*right_vec)[right_vec_index];
+        (*my_vector)[merged_vec_index] = (*right_vec)[right_vec_index];
         right_vec_index++;
-        merged_arr_index++;
+        merged_vec_index++;
     }
+	
     delete left_vec;
     delete right_vec;
-	
-// 	int left_vec_elems = mid - left + 1;
-//     int right_vec_elems = right - mid;
-  
-//     // Create temp arrays
-//     std::vector<int> *left_vec = new std::vector<int>[left_vec_elems];
-// 	std::vector<int> *right_vec = new std::vector<int>[right_vec_elems];
-  
-//     // Copy data to temp arrays leftArray[] and rightArray[]
-//     for (int i = 0; i < left_vec_elems; i++)
-//         (*left_vec)[i] = (*my_vector)[left + i];
-//     for (int j = 0; j < right_vec_elems; j++)
-//         (*right_vec)[j] = (*my_vector)[mid + 1 + j];
-  
-//     int left_vec_index = 0; // Initial index of first sub-array
-//     int right_vec_index = 0; // Initial index of second sub-array
-//     int merged_arr_index = left; // Initial index of merged array
-  
-//     // Merge the temp arrays back into array[left..right]
-//     while (left_vec_index < left_vec_elems && right_vec_index < right_vec_elems) {
-//         if ((*left_vec)[left_vec_index] <= (*right_vec)[right_vec_index]) {
-//             (*my_vector)[merged_arr_index] = (*left_vec)[left_vec_index];
-//             left_vec_index++;
-//         }
-//         else {
-//             (*my_vector)[merged_arr_index] = (*right_vec)[right_vec_index];
-//             right_vec_index++;
-//         }
-//         merged_arr_index++;
-//     }
-//     // Copy the remaining elements of
-//     // left[], if there are any
-//     while (left_vec_index < left_vec_elems) {
-//         (*my_vector)[merged_arr_index] = (*left_vec)[left_vec_index];
-//         left_vec_index++;
-//         merged_arr_index++;
-//     }
-//     // Copy the remaining elements of
-//     // right[], if there are any
-//     while (right_vec_index < right_vec_elems) {
-//         (*my_vector)[merged_arr_index] = (*right_vec)[right_vec_index];
-//         right_vec_index++;
-//         merged_arr_index++;
-//     }
-//     delete[] left_vec;
-//     delete[] right_vec;
 }
 
 void merge_sort(std::vector<int> * my_vector, int const begin, int const end) {
 	
-	int	threshold = 10;
+	int	threshold = 15;
 	int mid;
 	
 	if (begin >= end)
