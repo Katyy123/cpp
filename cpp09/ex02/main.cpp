@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:46 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/26 21:07:26 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/26 21:16:22 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int main(int argc, char **argv) {
 	}
 	list_end = clock();
 
-	//make input array using argv
 	for (int i = 1; i < argc; ++i) {
 		int num = std::stoi(argv[i]);
 		input_vector.push_back(num);

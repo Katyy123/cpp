@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:52 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/26 21:08:20 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/26 22:45:46 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,10 +137,6 @@ std::vector<int> * merge_insert_sort(int elem_number, char **num_matrix, std::ve
 	}
 
 	merge_sort (my_vector, 0, my_vector->size() - 1);
-	
-	// for (std::vector<int>::const_iterator it = my_vector->begin(); it != my_vector->end(); ++it)
-	// 	std::cout << *it << " ";
-	// std::cout << std::endl;
 
 	return my_vector;
 }
@@ -148,65 +144,206 @@ std::vector<int> * merge_insert_sort(int elem_number, char **num_matrix, std::ve
 
 /* ------------------------- LIST ------------------------- */
 
-//#include <algorithm>
-//#include <stdexcept>
-//#include <cstdlib>
+
 void insertion_sort(std::list<int> * my_list, int begin, int end) {
 	
-	for (int i = begin; i < end; i++) {
-        // Get the value at index (i+1)
-        int tempVal = *std::next(my_list->begin(), i + 1);
-        int j = i + 1;
-        // Shift elements to the right to make space for the current element
-        while (j > begin && *std::next(my_list->begin(), j - 1) > tempVal) {
-            *std::next(my_list->begin(), j) = *std::next(my_list->begin(), j - 1);
-            j--;
-        }
-        // Insert the current element at its correct position
-        *std::next(my_list->begin(), j) = tempVal;
-    }
-	// std::list<int>::iterator	it_begin = my_list->begin();
-	// std::list<int>::iterator	it_end = my_list->end();
-	// //std::list<int>::reverse_iterator	it_end = my_list->rbegin();//
-	// std::list<int>::iterator	it;
-	// std::list<int>::iterator	it_2;
-	// std::list<int>::iterator	it_3;
-	// int							key;
+	// for (int i = begin; i < end; i++) {
+    //     // Get the value at index (i+1)
+    //     int tempVal = *std::next(my_list->begin(), i + 1);
+    //     int j = i + 1;
+    //     // Shift elements to the right to make space for the current element
+    //     while (j > begin && *std::next(my_list->begin(), j - 1) > tempVal) {
+    //         *std::next(my_list->begin(), j) = *std::next(my_list->begin(), j - 1);
+    //         j--;
+    //     }
+    //     // Insert the current element at its correct position
+    //     *std::next(my_list->begin(), j) = tempVal;
+    // }
+
+	std::list<int>::iterator	it_begin = my_list->begin();
+	std::list<int>::iterator	it_end = my_list->end();
+	//std::list<int>::reverse_iterator	it_end = my_list->rbegin();//
+	std::list<int>::iterator	it;
+	std::list<int>::iterator	it_2;
+	std::list<int>::iterator	it_3;
+	//int							key;
 	
-	// for (int i = 0; i < begin; i++)
-	// 	it_begin++;
+	for (int i = 0; i < begin; i++)
+		it_begin++;
 	// for (int i = my_list->size(); i > end + 1; i--)
 	// 	it_end--;
-	// // it_end--;//
-	// // for (int i = my_list->size(); i > end + 1; i--)//
-	// // 	it_end++;//
-	// it = it_begin;
-	// it++;
+	it_end--;//
+	for (int i = my_list->size() - 1; i > end; i--)//
+		it_end--;//
+	it = it_begin;
+	it++;
+	
+	std::cout << "it_begin: " << *it_begin << std::endl;
+	std::cout << "it_end: " << *it_end << std::endl;
+	std::cout << "before it_end: " << *std::prev(it_end, 1) << std::endl;
+	std::cout << "it: " << *it << std::endl;
+	
+	while (it != it_end) {
+		//key = *it;
+		it_2 = it;
+		it_2--;
+		//std::cout << "key: " << key << std::endl;
+		std::cout << "it: " << *it << std::endl;
+		std::cout << "it_2: " << *it_2 << std::endl;
+		while (it_2 != it_begin && *it_2 > *it) {
+			it_3 = it_2;
+			it_3++; it_3++;
+			std::cout << "--1-- it_2: " << *it_2 << std::endl;
+			std::cout << "--1-- it_3: " << *it_3 << std::endl;
+			std::cout << "--1-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
+			if (it_3 != my_list->begin())
+				it_3 = my_list->insert(it_3, *it_2);
+			else
+				my_list->push_front(*it_2);
+			it_2 = my_list->erase(it_2);
+			it_2--;
+		}
+		if (it_2 == it_begin && *it_2 > *it) {
+			it_3 = it_2;
+			it_3++; it_3++;
+			std::cout << "--2-- it_2: " << *it_2 << std::endl;
+			std::cout << "--2-- it_3: " << *it_3 << std::endl;
+			std::cout << "--2-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
+			if (it_3 != my_list->begin())
+				it_3 = my_list->insert(it_3, *it_2);
+			else
+				my_list->push_front(*it_2);
+			//std::list<int>::iterator it_4;
+			it_2 = my_list->erase(it_2);
+			it_2--;
+		}
+		// it_3 = it_2;
+		// //std::cout << *it_3 << std::endl;
+		// it_3++; it_3++;
+		// std::cout << "--3-- it_2: " << *it_2 << std::endl;
+		// std::cout << "--3-- it_3: " << *it_3 << std::endl;
+		// std::cout << "--3-- In position of number " << *it_3 << " put " << *it << std::endl;
+		// it_3 = my_list->insert(it_3, *it);
+		// it = my_list->erase(it);
+		it++;
+	}
+	if (it == it_end) {
+		//key = *it;
+		it_2 = it;
+		it_2--;
+		//std::cout << "--4-- key: " << key << std::endl;
+		std::cout << "--4-- it: " << *it << std::endl;
+		std::cout << "--4-- it_2: " << *it_2 << std::endl;
+		while (it_2 != it_begin && *it_2 > *it) {
+			it_3 = it_2;
+			it_3++; it_3++;
+			std::cout << "--5-- it_2: " << *it_2 << std::endl;
+			std::cout << "--5-- it_3: " << *it_3 << std::endl;
+			std::cout << "--5-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
+			if (it_3 != my_list->begin())
+				it_3 = my_list->insert(it_3, *it_2);
+			else
+				my_list->push_front(*it_2);
+			it_2 = my_list->erase(it_2);
+			it_2--;
+		}
+		if (it_2 == it_begin && *it_2 > *it) {
+			it_3 = it_2;
+			it_3++; it_3++;
+			std::cout << "--6-- it_2: " << *it_2 << std::endl;
+			std::cout << "--6-- it_3: " << *it_3 << std::endl;
+			std::cout << "--6-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
+			if (it_3 != my_list->begin())
+				it_3 = my_list->insert(it_3, *it_2);
+			else
+				my_list->push_front(*it_2);
+			//std::list<int>::iterator it_4;
+			it_2 = my_list->erase(it_2);
+			it_2--;
+		}
+		// it_3 = it_2;
+		// //std::cout << *it_3 << std::endl;
+		// it_3++; it_3++;
+		// std::cout << "--7-- it_2: " << *it_2 << std::endl;
+		// std::cout << "--7-- it_3: " << *it_3 << std::endl;
+		// std::cout << "--7-- In position of number " << *it_3 << " put " << key << std::endl;
+		// it_3 = my_list->insert(it_3, key);
+		// it = my_list->erase(it);
+		// it++;
+	}
+	
 	// while (it != it_end) {
 	// 	key = *it;
 	// 	it_2 = it;
 	// 	it_2--;
+	// 	std::cout << "key: " << key << std::endl;
+	// 	std::cout << "it: " << *it << std::endl;
+	// 	std::cout << "it_2: " << *it_2 << std::endl;
 	// 	while (it_2 != it_begin && *it_2 > key) {
 	// 		it_3 = it_2;
 	// 		it_3++;
+	// 		std::cout << "--1-- it_2: " << *it_2 << std::endl;
+	// 		std::cout << "--1-- it_3: " << *it_3 << std::endl;
 	// 		std::cout << "--1-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
 	// 		my_list->insert(it_3, *it_2);
 	// 		it_2 = my_list->erase(it_2);
 	// 		it_2--;
 	// 	}
 	// 	if (it_2 == it_begin && *it_2 > key) {
-	// 	it_3 = it_2;
-	// 	it_3++;
-	// 	std::cout << "--2-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
-	// 	my_list->insert(it_3, *it_2);
-	// 	//std::list<int>::iterator it_4;
-	// 	it_2 = my_list->erase(it_2);
-	// 	it_2--;
+	// 		it_3 = it_2;
+	// 		it_3++;
+	// 		std::cout << "--2-- it_2: " << *it_2 << std::endl;
+	// 		std::cout << "--2-- it_3: " << *it_3 << std::endl;
+	// 		std::cout << "--2-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
+	// 		my_list->insert(it_3, *it_2);
+	// 		//std::list<int>::iterator it_4;
+	// 		it_2 = my_list->erase(it_2);
+	// 		it_2--;
 	// 	}
 	// 	it_3 = it_2;
 	// 	//std::cout << *it_3 << std::endl;
 	// 	it_3++;
+	// 	std::cout << "--3-- it_2: " << *it_2 << std::endl;
+	// 	std::cout << "--3-- it_3: " << *it_3 << std::endl;
 	// 	std::cout << "--3-- In position of number " << *it_3 << " put " << key << std::endl;
+	// 	my_list->insert(it_3, key);
+	// 	it = my_list->erase(it);
+	// 	it++;
+	// }
+	// if (it == it_end) {
+	// 	key = *it;
+	// 	it_2 = it;
+	// 	it_2--;
+	// 	std::cout << "--4-- key: " << key << std::endl;
+	// 	std::cout << "--4-- it: " << *it << std::endl;
+	// 	std::cout << "--4-- it_2: " << *it_2 << std::endl;
+	// 	while (it_2 != it_begin && *it_2 > key) {
+	// 		it_3 = it_2;
+	// 		it_3++;
+	// 		std::cout << "--5-- it_2: " << *it_2 << std::endl;
+	// 		std::cout << "--5-- it_3: " << *it_3 << std::endl;
+	// 		std::cout << "--5-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
+	// 		my_list->insert(it_3, *it_2);
+	// 		it_2 = my_list->erase(it_2);
+	// 		it_2--;
+	// 	}
+	// 	if (it_2 == it_begin && *it_2 > key) {
+	// 		it_3 = it_2;
+	// 		it_3++;
+	// 		std::cout << "--6-- it_2: " << *it_2 << std::endl;
+	// 		std::cout << "--6-- it_3: " << *it_3 << std::endl;
+	// 		std::cout << "--6-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
+	// 		my_list->insert(it_3, *it_2);
+	// 		//std::list<int>::iterator it_4;
+	// 		it_2 = my_list->erase(it_2);
+	// 		it_2--;
+	// 	}
+	// 	it_3 = it_2;
+	// 	//std::cout << *it_3 << std::endl;
+	// 	it_3++;
+	// 	std::cout << "--7-- it_2: " << *it_2 << std::endl;
+	// 	std::cout << "--7-- it_3: " << *it_3 << std::endl;
+	// 	std::cout << "--7-- In position of number " << *it_3 << " put " << key << std::endl;
 	// 	my_list->insert(it_3, key);
 	// 	it = my_list->erase(it);
 	// 	it++;
