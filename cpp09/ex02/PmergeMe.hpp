@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:54 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/25 16:56:33 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/26 17:47:01 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <cmath>
 
 /* PmergeMe.cpp */
-void	print_output(std::vector<int> const & input_array, std::vector<int> const & sorted_vector,
+void	print_output(std::vector<int> const & input_vector, std::vector<int> const & sorted_vector,
 			std::list<int> const & sorted_list, size_t elem_number, double vector_time, double list_time);
 			
 std::vector<int> * merge_insert_sort(int argc, char **argv, std::vector<int> * my_vector);

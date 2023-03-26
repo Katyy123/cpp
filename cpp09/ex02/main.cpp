@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:46 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/25 17:43:41 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/26 17:46:20 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
 	double					list_time;
 	std::vector<int>		*my_vector = new std::vector<int>;
 	std::list<int>			*my_list = new std::list<int>;
-	std::vector<int>		input_array;
+	std::vector<int>		input_vector;
 	
 	if (argc < 2) {
 		std::cerr << "Error: bad arguments" << std::endl;
@@ -48,15 +48,17 @@ int main(int argc, char **argv) {
 	//make input array using argv
 	for (int i = 1; i < argc; ++i) {
 		int num = std::stoi(argv[i]);
-		input_array.push_back(num);
+		input_vector.push_back(num);
 	}
 	
 	vector_time = double(vector_end - vector_start) / double(CLOCKS_PER_SEC);
 	list_time = double(list_end - list_start) / double(CLOCKS_PER_SEC);
 
-	print_output(input_array, *my_vector, *my_list, input_array.size(), vector_time, list_time);
+	print_output(input_vector, *my_vector, *my_list, input_vector.size(), vector_time, list_time);
 
-
+	// for (size_t i = 0; i < my_vector->size(); i++)
+    //     std::cout << (*my_vector)[i] << std::endl; 
+	
 	// std::ofstream outfile;
 	// outfile.open("outfile.txt");
 	// for (int n = 1; n < 100; n += 5) {
