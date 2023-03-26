@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:46 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/26 17:46:20 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/26 21:07:26 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int main(int argc, char **argv) {
 	}
 	catch(std::exception & e) {
 		std::cerr << "Error: bad input" << std::endl;
+		return -1;
 	}
 	vector_end = clock();
 
@@ -42,6 +43,7 @@ int main(int argc, char **argv) {
 	}
 	catch(std::exception & e) {
 		std::cerr << "Error: bad input" << std::endl;
+		return -1;
 	}
 	list_end = clock();
 
@@ -55,22 +57,6 @@ int main(int argc, char **argv) {
 	list_time = double(list_end - list_start) / double(CLOCKS_PER_SEC);
 
 	print_output(input_vector, *my_vector, *my_list, input_vector.size(), vector_time, list_time);
-
-	// for (size_t i = 0; i < my_vector->size(); i++)
-    //     std::cout << (*my_vector)[i] << std::endl; 
-	
-	// std::ofstream outfile;
-	// outfile.open("outfile.txt");
-	// for (int n = 1; n < 100; n += 5) {
-	// 	for (int k = 1; k < 100 && k <= n; k += 5) {
-	// 		float complex;
-	// 		//complex = (n * k) + (n * log10(n / k));
-	// 		complex = n + n * log10(n/k);
-	// 		outfile << "N = " << n << ", K = " << k << " => complexity = " << complex << std::endl;
-	// 	}
-	// }
-	// outfile.close();
-	
 	
 	delete my_vector;
 	delete my_list;
