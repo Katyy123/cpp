@@ -6,7 +6,7 @@
 /*   By: catia <catia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:52 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/27 03:56:57 by catia            ###   ########.fr       */
+/*   Updated: 2023/03/27 05:18:35 by catia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,42 +149,21 @@ void insertion_sort(std::list<int> * my_list, int begin, int end) {
 
 	std::list<int>::iterator it;
 	std::list<int>::iterator jt;
-	// std::list<int>::iterator it_end;
 	int i;
 	int key;
 	int j;
 	
-	// it = ft_next(my_list->begin(), begin + 1);
-	// it_end = ft_next(it, end - begin);
-	// for (it = ft_next(my_list->begin(), begin + 1); it != it_end; it++) {
-	// 	key = *it;
-	// 	//key = (*my_list)[i];
-	// 	j = i - 1;
-	// 	jt = ft_prev(it, 1);
-	// 	while (j >= begin && *jt > key) {
-	// 		*ft_next(jt, 1) = *jt;
-	// 		//(*my_list)[j + 1] = (*my_list)[j];
-	// 		j--;
-	// 		jt--;
-	// 	}
-	// 	*ft_next(jt, 1) = key;
-	// 	//(*my_list)[j + 1] = key;
-	// }
-	
 	it = ft_next(my_list->begin(), begin + 1);
 	for (i = begin + 1; i <= end; i++) {
 		key = *it;
-		//key = (*my_list)[i];
 		j = i - 1;
 		jt = ft_prev(it, 1);
 		while (j >= begin && *jt > key) {
 			*ft_next(jt, 1) = *jt;
-			//(*my_list)[j + 1] = (*my_list)[j];
 			j--;
 			jt--;
 		}
 		*ft_next(jt, 1) = key;
-		//(*my_list)[j + 1] = key;
 		it++;
 	}
 }
@@ -208,19 +187,11 @@ void merge(std::list<int> * my_list, int const left, int const mid, int const ri
 	it_left = ft_next(my_list->begin(), left);
     for (int i = 0; i < left_list_elems; i++) {
 		left_list->push_back(*it_left);
-		//std::cout << "left_list: " << *it_left << std::endl;
-		//left_list->push_back((*my_list)[left + i]);
 		it_left++;
 	}
-	// std::cout << "*it_left: " << *it_left << std::endl;
-	// std::cout << "mid: " << mid << std::endl;
-	// std::cout << "left: " << left << std::endl;
-	// std::cout << "mid + 1 - left: " << mid + 1 - left << std::endl;
 	it_mid_plus_1 = ft_next(my_list->begin(), mid + 1);
     for (int j = 0; j < right_list_elems; j++) {
 		right_list->push_back(*it_mid_plus_1);
-		//std::cout << "right_list: " << *it_mid_plus_1 << std::endl;;
-        // right_list->push_back((*my_list)[mid + 1 + j]);
 		it_mid_plus_1++;
 	}
 
@@ -234,13 +205,8 @@ void merge(std::list<int> * my_list, int const left, int const mid, int const ri
             left_list_index++;
 			it_left_lst++;
         }
-        // if ((*left_vec)[left_vec_index] <= (*right_vec)[right_vec_index]) {
-        //     (*my_list)[merged_vec_index] = (*left_vec)[left_vec_index];
-        //     left_list_index++;
-        // }
         else {
 			*it_merged_lst = *it_right_lst;
-            // (*my_list)[merged_vec_index] = (*right_vec)[right_vec_index];
             right_list_index++;
 			it_right_lst++;
         }
@@ -266,40 +232,6 @@ void merge(std::list<int> * my_list, int const left, int const mid, int const ri
 	
     delete left_list;
     delete right_list;
-	
-	// int n1 = mid - left + 1;
-    // int n2 = right - mid;
-    // std::list<int> LA, RA;
-    // // Copy elements from the left sublist to LA
-    // for (int i = 0; i < n1; i++) {
-    //     LA.push_back(*std::next(my_list->begin(), left + i));
-    // }
-    // // Copy elements from the right sublist to RA
-    // for (int i = 0; i < n2; i++) {
-    //     RA.push_back(*std::next(my_list->begin(), mid + 1 + i));
-    // }
-    // int RIDX = 0;
-    // int LIDX = 0;
-    // // Merge LA and RA into A
-    // for (int i = left; i <= right; i++) {
-    //     if (RIDX == n2) {
-    //         *std::next(my_list->begin(), i) = LA.front();
-    //         LA.pop_front();
-    //         LIDX++;
-    //     } else if (LIDX == n1) {
-    //         *std::next(my_list->begin(), i) = RA.front();
-    //         RA.pop_front();
-    //         RIDX++;
-    //     } else if (RA.front() > LA.front()) {
-    //         *std::next(my_list->begin(), i) = LA.front();
-    //         LA.pop_front();
-    //         LIDX++;
-    //     } else {
-    //         *std::next(my_list->begin(), i) = RA.front();
-    //         RA.pop_front();
-    //         RIDX++;
-    //     }
-    // }
 }
 
 void merge_sort(std::list<int> * my_list, int const begin, int const end) {
