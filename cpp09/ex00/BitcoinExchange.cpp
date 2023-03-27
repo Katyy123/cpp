@@ -6,7 +6,7 @@
 /*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:51:34 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/23 17:43:22 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:38:40 by cfiliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,11 +165,11 @@ int read_infile(std::ifstream & infile, std::map<Date, float> & database_map) {
 		i = 0;
 		while (dash_pos != sub_str.npos && i < 2) {
 			if (sub_sub_str.find_first_not_of("0123456789") != sub_sub_str.npos) {
-				std::cerr << "Error: bad input => " << line << std::endl;
+				//std::cerr << "Error: bad input => " << line << std::endl;
 				break;
 			}
 			if (ft_is_toobig(sub_sub_str) == true) {
-				std::cerr << "Error: too large number." << std::endl;
+				//std::cerr << "Error: too large number." << std::endl;
 				break;
 			}
 			if (i == 0)
@@ -182,17 +182,18 @@ int read_infile(std::ifstream & infile, std::map<Date, float> & database_map) {
 			i++;
 		}
 		if (i != 2) {
+			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
 		sub_sub_str = sub_str.substr(temp_dash_pos + 1, sub_str.npos);
 		if (sub_sub_str.find_first_not_of("0123456789") != sub_sub_str.npos) {
 				std::cerr << "Error: bad input => " << line << std::endl;
 				continue;
-			}
-			if (ft_is_toobig(sub_sub_str) == true) {
-				std::cerr << "Error: too large number." << std::endl;
-				continue;
-			}
+		}
+		if (ft_is_toobig(sub_sub_str) == true) {
+			std::cerr << "Error: too large number." << std::endl;
+			continue;
+		}
 		day = ft_stoi(sub_sub_str);
 		if (year > 3000 || !(month >= 1 && month <= 12) || ! (day >= 1 && day <= 31)) {
 			std::cerr << "Error: bad input => " << line << std::endl;
