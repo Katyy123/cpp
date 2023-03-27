@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: catia <catia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:52 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/26 22:45:46 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/27 03:56:57 by catia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,259 +146,160 @@ std::vector<int> * merge_insert_sort(int elem_number, char **num_matrix, std::ve
 
 
 void insertion_sort(std::list<int> * my_list, int begin, int end) {
-	
-	// for (int i = begin; i < end; i++) {
-    //     // Get the value at index (i+1)
-    //     int tempVal = *std::next(my_list->begin(), i + 1);
-    //     int j = i + 1;
-    //     // Shift elements to the right to make space for the current element
-    //     while (j > begin && *std::next(my_list->begin(), j - 1) > tempVal) {
-    //         *std::next(my_list->begin(), j) = *std::next(my_list->begin(), j - 1);
-    //         j--;
-    //     }
-    //     // Insert the current element at its correct position
-    //     *std::next(my_list->begin(), j) = tempVal;
-    // }
 
-	std::list<int>::iterator	it_begin = my_list->begin();
-	std::list<int>::iterator	it_end = my_list->end();
-	//std::list<int>::reverse_iterator	it_end = my_list->rbegin();//
-	std::list<int>::iterator	it;
-	std::list<int>::iterator	it_2;
-	std::list<int>::iterator	it_3;
-	//int							key;
+	std::list<int>::iterator it;
+	std::list<int>::iterator jt;
+	// std::list<int>::iterator it_end;
+	int i;
+	int key;
+	int j;
 	
-	for (int i = 0; i < begin; i++)
-		it_begin++;
-	// for (int i = my_list->size(); i > end + 1; i--)
-	// 	it_end--;
-	it_end--;//
-	for (int i = my_list->size() - 1; i > end; i--)//
-		it_end--;//
-	it = it_begin;
-	it++;
+	// it = ft_next(my_list->begin(), begin + 1);
+	// it_end = ft_next(it, end - begin);
+	// for (it = ft_next(my_list->begin(), begin + 1); it != it_end; it++) {
+	// 	key = *it;
+	// 	//key = (*my_list)[i];
+	// 	j = i - 1;
+	// 	jt = ft_prev(it, 1);
+	// 	while (j >= begin && *jt > key) {
+	// 		*ft_next(jt, 1) = *jt;
+	// 		//(*my_list)[j + 1] = (*my_list)[j];
+	// 		j--;
+	// 		jt--;
+	// 	}
+	// 	*ft_next(jt, 1) = key;
+	// 	//(*my_list)[j + 1] = key;
+	// }
 	
-	std::cout << "it_begin: " << *it_begin << std::endl;
-	std::cout << "it_end: " << *it_end << std::endl;
-	std::cout << "before it_end: " << *std::prev(it_end, 1) << std::endl;
-	std::cout << "it: " << *it << std::endl;
-	
-	while (it != it_end) {
-		//key = *it;
-		it_2 = it;
-		it_2--;
-		//std::cout << "key: " << key << std::endl;
-		std::cout << "it: " << *it << std::endl;
-		std::cout << "it_2: " << *it_2 << std::endl;
-		while (it_2 != it_begin && *it_2 > *it) {
-			it_3 = it_2;
-			it_3++; it_3++;
-			std::cout << "--1-- it_2: " << *it_2 << std::endl;
-			std::cout << "--1-- it_3: " << *it_3 << std::endl;
-			std::cout << "--1-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
-			if (it_3 != my_list->begin())
-				it_3 = my_list->insert(it_3, *it_2);
-			else
-				my_list->push_front(*it_2);
-			it_2 = my_list->erase(it_2);
-			it_2--;
+	it = ft_next(my_list->begin(), begin + 1);
+	for (i = begin + 1; i <= end; i++) {
+		key = *it;
+		//key = (*my_list)[i];
+		j = i - 1;
+		jt = ft_prev(it, 1);
+		while (j >= begin && *jt > key) {
+			*ft_next(jt, 1) = *jt;
+			//(*my_list)[j + 1] = (*my_list)[j];
+			j--;
+			jt--;
 		}
-		if (it_2 == it_begin && *it_2 > *it) {
-			it_3 = it_2;
-			it_3++; it_3++;
-			std::cout << "--2-- it_2: " << *it_2 << std::endl;
-			std::cout << "--2-- it_3: " << *it_3 << std::endl;
-			std::cout << "--2-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
-			if (it_3 != my_list->begin())
-				it_3 = my_list->insert(it_3, *it_2);
-			else
-				my_list->push_front(*it_2);
-			//std::list<int>::iterator it_4;
-			it_2 = my_list->erase(it_2);
-			it_2--;
-		}
-		// it_3 = it_2;
-		// //std::cout << *it_3 << std::endl;
-		// it_3++; it_3++;
-		// std::cout << "--3-- it_2: " << *it_2 << std::endl;
-		// std::cout << "--3-- it_3: " << *it_3 << std::endl;
-		// std::cout << "--3-- In position of number " << *it_3 << " put " << *it << std::endl;
-		// it_3 = my_list->insert(it_3, *it);
-		// it = my_list->erase(it);
+		*ft_next(jt, 1) = key;
+		//(*my_list)[j + 1] = key;
 		it++;
 	}
-	if (it == it_end) {
-		//key = *it;
-		it_2 = it;
-		it_2--;
-		//std::cout << "--4-- key: " << key << std::endl;
-		std::cout << "--4-- it: " << *it << std::endl;
-		std::cout << "--4-- it_2: " << *it_2 << std::endl;
-		while (it_2 != it_begin && *it_2 > *it) {
-			it_3 = it_2;
-			it_3++; it_3++;
-			std::cout << "--5-- it_2: " << *it_2 << std::endl;
-			std::cout << "--5-- it_3: " << *it_3 << std::endl;
-			std::cout << "--5-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
-			if (it_3 != my_list->begin())
-				it_3 = my_list->insert(it_3, *it_2);
-			else
-				my_list->push_front(*it_2);
-			it_2 = my_list->erase(it_2);
-			it_2--;
-		}
-		if (it_2 == it_begin && *it_2 > *it) {
-			it_3 = it_2;
-			it_3++; it_3++;
-			std::cout << "--6-- it_2: " << *it_2 << std::endl;
-			std::cout << "--6-- it_3: " << *it_3 << std::endl;
-			std::cout << "--6-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
-			if (it_3 != my_list->begin())
-				it_3 = my_list->insert(it_3, *it_2);
-			else
-				my_list->push_front(*it_2);
-			//std::list<int>::iterator it_4;
-			it_2 = my_list->erase(it_2);
-			it_2--;
-		}
-		// it_3 = it_2;
-		// //std::cout << *it_3 << std::endl;
-		// it_3++; it_3++;
-		// std::cout << "--7-- it_2: " << *it_2 << std::endl;
-		// std::cout << "--7-- it_3: " << *it_3 << std::endl;
-		// std::cout << "--7-- In position of number " << *it_3 << " put " << key << std::endl;
-		// it_3 = my_list->insert(it_3, key);
-		// it = my_list->erase(it);
-		// it++;
-	}
-	
-	// while (it != it_end) {
-	// 	key = *it;
-	// 	it_2 = it;
-	// 	it_2--;
-	// 	std::cout << "key: " << key << std::endl;
-	// 	std::cout << "it: " << *it << std::endl;
-	// 	std::cout << "it_2: " << *it_2 << std::endl;
-	// 	while (it_2 != it_begin && *it_2 > key) {
-	// 		it_3 = it_2;
-	// 		it_3++;
-	// 		std::cout << "--1-- it_2: " << *it_2 << std::endl;
-	// 		std::cout << "--1-- it_3: " << *it_3 << std::endl;
-	// 		std::cout << "--1-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
-	// 		my_list->insert(it_3, *it_2);
-	// 		it_2 = my_list->erase(it_2);
-	// 		it_2--;
-	// 	}
-	// 	if (it_2 == it_begin && *it_2 > key) {
-	// 		it_3 = it_2;
-	// 		it_3++;
-	// 		std::cout << "--2-- it_2: " << *it_2 << std::endl;
-	// 		std::cout << "--2-- it_3: " << *it_3 << std::endl;
-	// 		std::cout << "--2-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
-	// 		my_list->insert(it_3, *it_2);
-	// 		//std::list<int>::iterator it_4;
-	// 		it_2 = my_list->erase(it_2);
-	// 		it_2--;
-	// 	}
-	// 	it_3 = it_2;
-	// 	//std::cout << *it_3 << std::endl;
-	// 	it_3++;
-	// 	std::cout << "--3-- it_2: " << *it_2 << std::endl;
-	// 	std::cout << "--3-- it_3: " << *it_3 << std::endl;
-	// 	std::cout << "--3-- In position of number " << *it_3 << " put " << key << std::endl;
-	// 	my_list->insert(it_3, key);
-	// 	it = my_list->erase(it);
-	// 	it++;
-	// }
-	// if (it == it_end) {
-	// 	key = *it;
-	// 	it_2 = it;
-	// 	it_2--;
-	// 	std::cout << "--4-- key: " << key << std::endl;
-	// 	std::cout << "--4-- it: " << *it << std::endl;
-	// 	std::cout << "--4-- it_2: " << *it_2 << std::endl;
-	// 	while (it_2 != it_begin && *it_2 > key) {
-	// 		it_3 = it_2;
-	// 		it_3++;
-	// 		std::cout << "--5-- it_2: " << *it_2 << std::endl;
-	// 		std::cout << "--5-- it_3: " << *it_3 << std::endl;
-	// 		std::cout << "--5-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
-	// 		my_list->insert(it_3, *it_2);
-	// 		it_2 = my_list->erase(it_2);
-	// 		it_2--;
-	// 	}
-	// 	if (it_2 == it_begin && *it_2 > key) {
-	// 		it_3 = it_2;
-	// 		it_3++;
-	// 		std::cout << "--6-- it_2: " << *it_2 << std::endl;
-	// 		std::cout << "--6-- it_3: " << *it_3 << std::endl;
-	// 		std::cout << "--6-- In position of number " << *it_3 << " put " << *it_2 << std::endl;
-	// 		my_list->insert(it_3, *it_2);
-	// 		//std::list<int>::iterator it_4;
-	// 		it_2 = my_list->erase(it_2);
-	// 		it_2--;
-	// 	}
-	// 	it_3 = it_2;
-	// 	//std::cout << *it_3 << std::endl;
-	// 	it_3++;
-	// 	std::cout << "--7-- it_2: " << *it_2 << std::endl;
-	// 	std::cout << "--7-- it_3: " << *it_3 << std::endl;
-	// 	std::cout << "--7-- In position of number " << *it_3 << " put " << key << std::endl;
-	// 	my_list->insert(it_3, key);
-	// 	it = my_list->erase(it);
-	// 	it++;
-	// }
-
-	// int i;
-	// int key;
-	// int j;
-	
-	// for (i = begin + 1; i <= end; i++) {
-	// 	key = (*my_list)[i];
-	// 	j = i - 1;
-	// 	while (j >= begin && (*my_list)[j] > key) {
-	// 		(*my_list)[j + 1] = (*my_list)[j];
-	// 		j--;
-	// 	}
-	// 	(*my_list)[j + 1] = key;
-	// }
 }
 
 void merge(std::list<int> * my_list, int const left, int const mid, int const right) {
 	
-	int n1 = mid - left + 1;
-    int n2 = right - mid;
-    std::list<int> LA, RA;
-    // Copy elements from the left sublist to LA
-    for (int i = 0; i < n1; i++) {
-        LA.push_back(*std::next(my_list->begin(), left + i));
-    }
-    // Copy elements from the right sublist to RA
-    for (int i = 0; i < n2; i++) {
-        RA.push_back(*std::next(my_list->begin(), mid + 1 + i));
-    }
-    int RIDX = 0;
-    int LIDX = 0;
-    // Merge LA and RA into A
-    for (int i = left; i <= right; i++) {
-        if (RIDX == n2) {
-            *std::next(my_list->begin(), i) = LA.front();
-            LA.pop_front();
-            LIDX++;
-        } else if (LIDX == n1) {
-            *std::next(my_list->begin(), i) = RA.front();
-            RA.pop_front();
-            RIDX++;
-        } else if (RA.front() > LA.front()) {
-            *std::next(my_list->begin(), i) = LA.front();
-            LA.pop_front();
-            LIDX++;
-        } else {
-            *std::next(my_list->begin(), i) = RA.front();
-            RA.pop_front();
-            RIDX++;
+	std::list<int>::iterator it_left;
+	std::list<int>::iterator it_mid_plus_1;
+	std::list<int> *left_list = new std::list<int>;
+	std::list<int> *right_list = new std::list<int>;
+	std::list<int>::iterator it_left_lst;
+	std::list<int>::iterator it_right_lst;
+	std::list<int>::iterator it_merged_lst;
+	int left_list_elems = mid - left + 1;
+    int right_list_elems = right - mid;
+	int left_list_index = 0;
+    int right_list_index = 0;
+    int merged_list_index = left;
+  
+    // Copy data to temp lists left_list and right_list
+	it_left = ft_next(my_list->begin(), left);
+    for (int i = 0; i < left_list_elems; i++) {
+		left_list->push_back(*it_left);
+		//std::cout << "left_list: " << *it_left << std::endl;
+		//left_list->push_back((*my_list)[left + i]);
+		it_left++;
+	}
+	// std::cout << "*it_left: " << *it_left << std::endl;
+	// std::cout << "mid: " << mid << std::endl;
+	// std::cout << "left: " << left << std::endl;
+	// std::cout << "mid + 1 - left: " << mid + 1 - left << std::endl;
+	it_mid_plus_1 = ft_next(my_list->begin(), mid + 1);
+    for (int j = 0; j < right_list_elems; j++) {
+		right_list->push_back(*it_mid_plus_1);
+		//std::cout << "right_list: " << *it_mid_plus_1 << std::endl;;
+        // right_list->push_back((*my_list)[mid + 1 + j]);
+		it_mid_plus_1++;
+	}
+
+	// Merge the temp lists back into my_list
+	it_left_lst = left_list->begin();
+	it_right_lst = right_list->begin();
+	it_merged_lst = ft_next(my_list->begin(), left);
+    while (left_list_index < left_list_elems && right_list_index < right_list_elems) {
+		if (*it_left_lst <= *it_right_lst) {
+            *it_merged_lst = *it_left_lst;
+            left_list_index++;
+			it_left_lst++;
         }
+        // if ((*left_vec)[left_vec_index] <= (*right_vec)[right_vec_index]) {
+        //     (*my_list)[merged_vec_index] = (*left_vec)[left_vec_index];
+        //     left_list_index++;
+        // }
+        else {
+			*it_merged_lst = *it_right_lst;
+            // (*my_list)[merged_vec_index] = (*right_vec)[right_vec_index];
+            right_list_index++;
+			it_right_lst++;
+        }
+        merged_list_index++;
+		it_merged_lst++;
     }
+    // Copy the remaining elements of left_vec, if there are any
+    while (left_list_index < left_list_elems) {
+        *it_merged_lst = *it_left_lst;
+        left_list_index++;
+        merged_list_index++;
+		it_left_lst++;
+		it_merged_lst++;
+    }
+    // Copy the remaining elements of right_vec, if there are any
+    while (right_list_index < right_list_elems) {
+        *it_merged_lst = *it_right_lst;
+        right_list_index++;
+        merged_list_index++;
+		it_right_lst++;
+		it_merged_lst++;
+    }
+	
+    delete left_list;
+    delete right_list;
+	
+	// int n1 = mid - left + 1;
+    // int n2 = right - mid;
+    // std::list<int> LA, RA;
+    // // Copy elements from the left sublist to LA
+    // for (int i = 0; i < n1; i++) {
+    //     LA.push_back(*std::next(my_list->begin(), left + i));
+    // }
+    // // Copy elements from the right sublist to RA
+    // for (int i = 0; i < n2; i++) {
+    //     RA.push_back(*std::next(my_list->begin(), mid + 1 + i));
+    // }
+    // int RIDX = 0;
+    // int LIDX = 0;
+    // // Merge LA and RA into A
+    // for (int i = left; i <= right; i++) {
+    //     if (RIDX == n2) {
+    //         *std::next(my_list->begin(), i) = LA.front();
+    //         LA.pop_front();
+    //         LIDX++;
+    //     } else if (LIDX == n1) {
+    //         *std::next(my_list->begin(), i) = RA.front();
+    //         RA.pop_front();
+    //         RIDX++;
+    //     } else if (RA.front() > LA.front()) {
+    //         *std::next(my_list->begin(), i) = LA.front();
+    //         LA.pop_front();
+    //         LIDX++;
+    //     } else {
+    //         *std::next(my_list->begin(), i) = RA.front();
+    //         RA.pop_front();
+    //         RIDX++;
+    //     }
+    // }
 }
 
 void merge_sort(std::list<int> * my_list, int const begin, int const end) {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: catia <catia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 18:13:54 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/26 21:15:57 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/27 01:25:55 by catia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ bool				ft_is_toobig(std::string const & str);
 int					ft_stoi(std::string const & str);
 int					ft_ctoi(char const c);
 float				ft_stof(std::string const &str);
+std::list<int>::iterator ft_next(std::list<int>::iterator it, int n);
+std::list<int>::iterator ft_prev(std::list<int>::iterator it, int n);
 	
 #endif

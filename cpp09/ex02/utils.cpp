@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: catia <catia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/25 14:07:58 by cfiliber          #+#    #+#             */
-/*   Updated: 2023/03/25 14:08:30 by cfiliber         ###   ########.fr       */
+/*   Updated: 2023/03/27 01:25:43 by catia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,20 @@ float	ft_stof(std::string const &str) {
 	}
 	num = int_part + dec_part;
 	return (num);
+}
+
+std::list<int>::iterator ft_next(std::list<int>::iterator it, int n) {
+
+	for (int i = 0; i < n; i++) {
+		it++;
+	}
+	return it;
+}
+
+std::list<int>::iterator ft_prev(std::list<int>::iterator it, int n) {
+
+	for (int i = 0; i < n; i++) {
+		it--;
+	}
+	return it;
 }
